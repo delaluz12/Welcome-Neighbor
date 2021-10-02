@@ -20,11 +20,8 @@ Neighborhood.init(
       allowNull: false,
     },
     state: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2),
       allowNull: false,
-      validate: {
-          len: [2],
-      }
     },
     zip: {
         type: DataTypes.INTEGER,
@@ -33,11 +30,11 @@ Neighborhood.init(
             len: [5],
         }
     },
-    role_id: {
+    admin_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'role',
+            model: 'user',
             key: 'id',
         }
     },

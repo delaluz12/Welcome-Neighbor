@@ -15,18 +15,18 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    contents: {
+    content: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
     visibility: {
         type: DataTypes.TEXT,
         allowNull: false,
-        defaultValue: local,
+        defaultValue: 'local',
+    },
+    post_date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     post_user_id: {
         type: DataTypes.INTEGER,
