@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Neighborhood extends Model {}
 
-Post.init(
+Neighborhood.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,28 +11,33 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_date_created: {
-      type: DataTypes.DATE,
+    city: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    contents: {
-      type: DataTypes.TEXT,
+    state: {
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+          len: [2],
+      }
     },
-    visibility: {
-        type: DataTypes.TEXT,
+    zip: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: local,
+        validate: {
+            len: [5],
+        }
     },
-    post_user_id: {
+    role_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'user',
+            model: 'role',
             key: 'id',
         }
     },
@@ -41,8 +46,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'neighborhood',
   }
 );
 
-module.exports = Post;
+module.exports = Neighborhood;
