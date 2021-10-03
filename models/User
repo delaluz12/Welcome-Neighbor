@@ -16,7 +16,6 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,7 +34,6 @@ User.init(
     role_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      
     },
   },
   {

@@ -1,4 +1,4 @@
 -- db schema
-DROP DATABASE IF EXISTS name_db;
+DROP DATABASE IF EXISTS neighbor_db;
 
-CREATE DATABASE name_db;
+CREATE DATABASE neighbor_db;
