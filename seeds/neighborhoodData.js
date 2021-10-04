@@ -2,14 +2,14 @@ const { Neighborhood } = require('../models');
 
 const neighborhooddata = [
   {
-    name: 'Maple Street',
+    name: 'Rolling Hills',
     city: 'Ourtown',
     state: 'MN',
     zip: 55500,
     admin_id: 1,
   },
   {
-    name: 'Elm Street',
+    name: 'City Park',
     city: 'Ourtown',
     state: 'MN',
     zip: 55500,
