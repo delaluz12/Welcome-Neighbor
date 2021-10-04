@@ -39,11 +39,11 @@ User.init(
         key: 'id',
       }
     },
-    neighborhood_id: {
+    unit_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'neighborhood',
+        model: 'unit',
         key: 'id',
       }
     },
