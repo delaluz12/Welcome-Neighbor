@@ -9,6 +9,6 @@ const roledata = [
   },
 ];
 
-const seedRole = () => User.bulkCreate(roledata);
+const seedRole = () => Role.bulkCreate(roledata);
 
 module.exports = seedRole;

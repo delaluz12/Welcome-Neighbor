@@ -38,6 +38,6 @@ const unitdata = [
   },
 ];
 
-const seedUnit = () => Post.bulkCreate(unitdata);
+const seedUnit = () => Unit.bulkCreate(unitdata);
 
 module.exports = seedUnit;

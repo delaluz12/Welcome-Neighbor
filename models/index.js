@@ -8,14 +8,16 @@ const Unit = require('./Unit');
 const User = require('./User');
 
 User.belongsTo(Role, {
-    foreignKey: role_id,
+    foreignKey: 'role_id',
+})
+
+User.belongsTo(Neighborhood, {
+    foreignKey: 'neighborhood_id',
 })
 
 Role.hasMany(User);
 
-Neighborhood.belongsTo(User, {
-    foreignKey: admin_id,
-})
+Neighborhood.hasMany(User);
 
 Unit.belongsTo(Neighborhood, {
     foreignKey: 'comment_creator_id',

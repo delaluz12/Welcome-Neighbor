@@ -139,6 +139,6 @@ const persondata = [
   },
 ];
 
-const seedPerson = () => User.bulkCreate(persondata);
+const seedPerson = () => Person.bulkCreate(persondata);
 
 module.exports = seedPerson;

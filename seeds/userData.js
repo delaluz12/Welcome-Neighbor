@@ -14,36 +14,43 @@ const userdata = [
     email: 'admin1@test.com',
     password: admin1,
     role_id: 1,
+    neighborhood_id: 1,
   },
   {
     email: 'admin2@test.com',
     password: admin2,
     role_id: 1,
+    neighborhood_id: 2,
   },
   {
     email: 'user1@test.com',
     password: user1,
     role_id: 2,
+    neighborhood_id: 1,
   },
   {
     email: 'user2@test.com',
     password: user2,
     role_id: 2,
+    neighborhood_id: 1,
   },
   {
     email: 'user3@test.com',
     password: user3,
     role_id: 2,
+    neighborhood_id: 1,
   },
   {
     email: 'user4@test.com',
     password: user4,
     role_id: 2,
+    neighborhood_id: 1,
   },
   {
     email: 'user5@test.com',
     password: user5,
     role_id: 2,
+    neighborhood_id: 1,
   },
 ];
 

@@ -30,14 +30,6 @@ Neighborhood.init(
             len: [5],
         }
     },
-    admin_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'user',
-            key: 'id',
-        }
-    },
   },
   {
     sequelize,

@@ -26,9 +26,9 @@ Event.init(
     visibility: {
         type: DataTypes.TEXT,
         allowNull: false,
-        defaultValue: local,
+        defaultValue: 'local',
     },
-    post_date_created: {
+    event_date_created: {
       type: DataTypes.DATE,
       allowNull: false,
     },
