@@ -46,6 +46,7 @@ Event.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'event',
+
   }
 );
 

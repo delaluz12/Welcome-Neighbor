@@ -1,4 +1,6 @@
+
 // models and associations
+
 const Event = require('./Event');
 const Neighborhood = require('./Neighborhood');
 const Person = require('./Person');
@@ -10,6 +12,7 @@ const User = require('./User');
 User.belongsTo(Role, {
     foreignKey: 'role_id',
 })
+
 
 User.belongsTo(Unit, {
     foreignKey: 'unit_id',
