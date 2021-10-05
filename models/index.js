@@ -1,4 +1,6 @@
 
+// models and associations
+
 const Event = require('./Event');
 const Neighborhood = require('./Neighborhood');
 const Person = require('./Person');

@@ -27,6 +27,7 @@ Event.init(
         type: DataTypes.TEXT,
         allowNull: false,
         defaultValue: 'local',
+
     },
     post_date_created: {
       type: DataTypes.DATE,
@@ -45,7 +46,8 @@ Event.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Event',
+    modelName: 'event',
+
   }
 );
 
