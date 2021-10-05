@@ -1,8 +1,45 @@
 const router = require('express').Router();
-const { User } = require('../../models');
 
-// CREATE new user
-router.post('/', async (req, res) => {
+
+const { User, Unit } = require('../../models');
+
+// CREATE new user and unit
+router.post('/:neighbor_id', async (req, res) => {
+  try {
+    
+    const dbUnit=await Unit.create({
+      unit_number: req.body.unit_number,
+      unit_name: req.body.street,
+      neighborhood_id: req.params.neighbor_id,
+      created_at: 'null',
+      updated_at: 'null'
+      
+    });
+
+
+    const dbUserData = await User.create({
+      email: req.body.email,
+      password: req.body.password,
+      role_id: 2,
+      unit_id: 3
+    });
+
+  
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// CREATE new admin
+router.post('/admin', async (req, res) => {
   try {
     const dbUserData = await User.create({
       email: req.body.email,
@@ -12,6 +49,8 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
+      
 
       res.status(200).json(dbUserData);
     });
@@ -21,25 +60,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// CREATE new user
-router.post('/admin', async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      email: req.body.email,
-      password: req.body.password,
-      role_id: 2
-    });
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 // Login
 router.post('/login', async (req, res) => {
   try {
@@ -67,6 +88,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
 
       res
         .status(200)
