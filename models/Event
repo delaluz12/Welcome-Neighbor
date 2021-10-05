@@ -26,7 +26,8 @@ Event.init(
     visibility: {
         type: DataTypes.TEXT,
         allowNull: false,
-        defaultValue: local,
+        defaultValue: 'local',
+
     },
     post_date_created: {
       type: DataTypes.DATE,
@@ -46,6 +47,7 @@ Event.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'event',
+
   }
 );
 

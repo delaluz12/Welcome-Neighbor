@@ -1,4 +1,6 @@
+
 // models and associations
+
 const Event = require('./Event');
 const Neighborhood = require('./Neighborhood');
 const Person = require('./Person');
@@ -8,13 +10,13 @@ const Unit = require('./Unit');
 const User = require('./User');
 
 User.belongsTo(Role, {
-    foreignKey: role_id,
+    foreignKey: 'role_id',
 })
 
 Role.hasMany(User);
 
 Neighborhood.belongsTo(User, {
-    foreignKey: admin_id,
+    foreignKey: 'admin_id',
 })
 
 Unit.belongsTo(Neighborhood, {
