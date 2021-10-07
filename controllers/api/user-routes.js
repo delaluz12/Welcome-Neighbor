@@ -43,28 +43,6 @@ req.session.save(() => {
 }
 });
 
-// CREATE new admin
-router.post('/admin', async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      email: req.body.email,
-      password: req.body.password,
-      role_id: 1
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.user_id = dbUserData.id;
-
-
-      res.status(200).json(dbUserData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
   
  
 router.delete('/:id', async (req, res) => {
