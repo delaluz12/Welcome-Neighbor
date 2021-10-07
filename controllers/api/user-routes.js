@@ -4,38 +4,43 @@ const router = require('express').Router();
 const { User, Unit } = require('../../models');
 
 // CREATE new user and unit
-router.post('/:neighbor_id', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    
-    const dbUnit=await Unit.create({
+
+    const dbUnit = await Unit.create({
       unit_number: req.body.unit_number,
       unit_name: req.body.street,
-      neighborhood_id: req.params.neighbor_id,
+      neighborhood_id: req.body.neighborhood_id,
       created_at: 'null',
       updated_at: 'null'
-      
+
     });
 
+    const newunit= await Unit.findOne({
+      attributes: ['id'],
+      where :{unit_number:req.body.unit_number,
+              unit_name: req.body.street },
+              raw: true, 
+    })
 
+  
     const dbUserData = await User.create({
       email: req.body.email,
       password: req.body.password,
-      role_id: 2,
-      unit_id: 3
-    });
+      role_id: req.body.role_id,
+      unit_id: newunit.id
+  });
 
-  
+req.session.save(() => {
+  req.session.loggedIn = true;
+  req.session.user_id = dbUserData.id;
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.user_id = dbUserData.id;
-
-      res.status(200).json(dbUserData);
-    });
+  res.status(200).json(dbUserData);
+});
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  console.log(err);
+  res.status(500).json(err);
+}
 });
 
 // CREATE new admin
@@ -50,7 +55,7 @@ router.post('/admin', async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
-      
+
 
       res.status(200).json(dbUserData);
     });
@@ -60,6 +65,26 @@ router.post('/admin', async (req, res) => {
   }
 });
 
+  
+ 
+router.delete('/:id', async (req, res) => {
+  try {
+    const userData = await User.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No User found with this id!' });
+      return;
+    }
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Login
 router.post('/login', async (req, res) => {
