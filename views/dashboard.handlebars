@@ -16,10 +16,10 @@
           {{#each posts as |post|}}
             {{!- #if}}
             <div class="posts">
-                <h2>{{post.title}}</h2>
+                <h5>{{post.title}}</h5>
                 <p>
                     {{post.content}}
-                    <br>
+                    <br><br>
                     {{post.post_date_created}}
                 </p>
              </div>  
@@ -27,9 +27,10 @@
         </div>
         <div class="col-6 col-sm-6">
             3
-         {{#each persons as |person|}}
+         {{#each neighbors as |neighbor|}}
             <div class="neighbors">
-                <p>.</p>
+                <p class="household">{{neighbor.first_name}}</p><p>{{neighbor.last_name}}</p>
+
             </div>
         {{/each}}
         </div>
