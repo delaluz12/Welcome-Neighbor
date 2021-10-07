@@ -1,29 +1,12 @@
 const router = require('express').Router();
-const User = require('../models/User');
-// Import the custom middleware
-const withAuth = require('../utils/auth');
 
-// GET all users for homepage
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['email']],
-    });
-
-    const users = userData.map((project) => project.get({ plain: true }));
-    console.log(users)
-
-    res.render('homepage', {
-      users,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+// GET homepage - landing page with Join or Create
+router.get('/', (req, res) => {
+  res.render('homepage');
+  return;
 });
 
+// GET login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -33,9 +16,14 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/dashboard', (req, res) =>{
-  res.render('dashboard', {style: 'dashboard'});
-});
+// GET signup page
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
+  res.render('signup');
+});
 
 module.exports = router;
