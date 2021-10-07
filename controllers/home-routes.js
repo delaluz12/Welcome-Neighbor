@@ -1,8 +1,14 @@
 const router = require('express').Router();
 
-// GET homepage - landing page with Join or Create
+// GET homepage
 router.get('/', (req, res) => {
   res.render('homepage');
+  return;
+});
+
+// GET homepage - landing page with Join or Create
+router.get('/browse', (req, res) => {
+  res.render('browse');
   return;
 });
 
