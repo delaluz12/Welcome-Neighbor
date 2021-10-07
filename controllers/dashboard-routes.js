@@ -1,11 +1,9 @@
 const router = require('express').Router();
-const { Post, User, Unit, Neighborhood, Person} = require('../models');
-
+const { Post, User, Unit, Neighborhood} = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
-
-// GET all posts
-router.get('/posts', withAuth, async (req, res) => {
+// GET data for the dashboard
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
         include: [{
@@ -19,18 +17,48 @@ router.get('/posts', withAuth, async (req, res) => {
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
-    console.log(posts);
+    const dbNeighborData = await Neighborhood.findAll({
+      where: {
+        // this is hardcoded for now until we know how it is coming from the webpage
+        neighborhood_id: 1
+      },
+      attribute: ['id'],
+      include: [{
+          model: Unit,
+          attributes: ['unit_number', 'unit_name'],
+          include: [{
+            model: Person,
+            attributes: ['first_name', 'last_name', 'type', 'phone', 'cell', 'birth_date']
+            }],
+          }]
+    });
+    const neighbors = dbNeighborData.map((neighbors) =>
+      neighbors.get({ plain: true })
+    );
+    const dbHouseholdData = await Unit.findAll({
+      where: {
+        // this is hardcoded for now until we know how it is coming from the webpage
+        id: 1
+      },
+      attribute: ['id'],
+      include: [{
+          model: Person,
+          }]
+    });
+    const household = dbHouseholdData.map((household) =>
+      household.get({ plain: true })
+    );
     res.render('dashboard', {
       posts,
-      loggedIn: req.session.loggedIn, style:'dashboard'
+      neighbors,
+      household,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
 // GET all neighbors
 router.get('/neighbors', withAuth, async (req, res) => {
     try {
@@ -43,15 +71,13 @@ router.get('/neighbors', withAuth, async (req, res) => {
       const neighbors = dbNeighborData.map((neighbors) =>
         neighbors.get({ plain: true })
       );
-      res.render('dashboard', {
+      res.render('homepage', {
         neighbors,
-        loggedIn: req.session.loggedIn, style:'dashboard'
+        loggedIn: req.session.loggedIn,
       });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
-
-
 module.exports = router;
