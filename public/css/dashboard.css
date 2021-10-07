@@ -1,0 +1,48 @@
+/* custom properties*/
+:root {
+    --bgc-TEST:rgb(241, 80, 80);
+    --bg-repeat: no-repeat;
+    --bg-attch: fixed;
+    --bg-p-x: center;
+    }
+
+body {
+    background-color:var(--bgc-TEST);
+}
+
+img {
+    width: 100%;
+}
+.profilePic {
+    display: flex ;
+    background-image:url(placeholder.png) ;
+    background-repeat: var(--bg-repeat);
+    background-size: 200px 100px;
+    background-position-x: var(--bg-p-x);
+    border-radius: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Scrollbar styling*/
+body::-webkit-scrollbar {
+    width: 15px; /* width of the entire scrollbar */
+  }
+  
+body::-webkit-scrollbar-track {
+    /*background: some colour;/* color of the tracking area */
+    /*box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /*shadow*/
+  }
+  
+body::-webkit-scrollbar-thumb {
+    /*background-color: some colour   /*var(--btnc-red);/* color of the scroll thumb */
+    border-radius: 30px;/* roundness of the scroll thumb */
+    border: 1px solid ;/* creates padding around scroll thumb */
+  }

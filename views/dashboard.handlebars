@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+        1
+        <div class="profilePic">
+            <img src="/images/placeholder.png">
+        </div>
+        <div class="profileInfo">
+            <h3>{{person.first_name}}</h3>
+        </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-6 col-sm-6">
+            2
+          {{#each posts as |post|}}
+            {{!- #if}}
+            <div class="posts">
+                <h2>{{post.title}}</h2>
+                <p>
+                    {{post.content}}
+                    <br>
+                    {{post.post_date_created}}
+                </p>
+             </div>  
+          {{/each}}
+        </div>
+        <div class="col-6 col-sm-6">
+            3
+         {{#each persons as |person|}}
+            <div class="neighbors">
+                <p>.</p>
+            </div>
+        {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
