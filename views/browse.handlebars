@@ -1,0 +1,36 @@
+{{!-- displays neighborhoods in db & displays join/create options for User --}}
+<div class="container d-grid gap-3 my-5">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h6 class="text-center mb-2"> Available Neighborhoods to Join</h6>
+            <ul class="list-group ">
+                {{!-- grab neighborhood names in db to display --}}
+                <li class="list-group-item">Rolling Hills</li>
+                <li class="list-group-item">City Park</li>
+
+            </ul>
+        </div>
+        <div class=" col-6">
+            <div class="row">
+                <div class="col my-4 ">
+                    <span class="text-muted"> See your neighborhood? Sign-up and join to connect with
+                        neighbors</span>
+                        {{!-- on click render neighbor FORM --}}
+                    <a href="/neighbor" class="d-flex justify-content-center text-decoration-none my-2"><button
+                            type="button" class="btn btn-primary">Join
+                            Neighborhood</button></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col my-4">
+                    <span class="text-muted"> Don't see your neighborhood? Sign-up and create a Neighborhood</span>
+                    {{!-- on click render admin FORM --}}
+                    <a href="/admin" class="d-flex justify-content-center text-decoration-none my-2"><button
+                            type="button" class="btn btn-outline-primary">Create
+                            Neighborhood</button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
