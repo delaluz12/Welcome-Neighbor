@@ -1,0 +1,69 @@
+
+header, footer {
+    background-color: gray;
+    margin: 20;
+    box-shadow: 5px 5px 20px rgb(214, 213, 213);
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+figure {
+    background: url('../css/assets/images/neighbors1.jpg') center center fixed;
+    height: 250px;
+}
+
+main {
+    background-color: rgb(238, 237, 237);
+    margin: 25px;
+    box-shadow: 5px 5px 20px rgb(214, 213, 213);
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: darkgray;
+}
+
+.email-input {
+    margin-left: 1.7em;
+}
+
+.navbar-nav {
+    margin: 10px;
+}
+
+h2 {
+    margin: 10px;
+}
+
+#logout {
+    background: none;
+    border: none;
+}
+
+#logout:hover {
+    background-color: darkgray;
+}
+
+#logo {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+    margin-left: 77px;
+    margin-bottom: 10px;
+    transform: rotate(40deg)
+}
+
+.social:hover {
+    transform: scale(120%);
+}
+
+.login-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
