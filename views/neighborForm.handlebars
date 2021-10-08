@@ -1,0 +1,40 @@
+<div class="container my-5">
+        <div class="row justify-content-center mb-4">
+            <div class=" col-6 header">
+                <h2> Sign-up to join a Neighborhood</h2>
+            </div>
+        </div>
+        <form class="row justify-content-center">
+            <select class="form-select w-50 mb-3" id="avail_neighborhoods">
+                <option selected value="null">Choose your neighborhood</option>
+                {{!-- input db neighborhood data --}}
+                <option value="rollingHills_db_id" id="rollingHills">Rolling Hills</option>
+                <option value="cityPark_db_id" id="cityPark">City Park</option>
+
+            </select>
+            <div class="mb-3 col-8">
+                <label for="neighbor_email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="neighbor_email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3 col-8">
+                <label for="neighbor_password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="neighbor_password">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="unit_number" class="form-label">House Number</label>
+                <input type="text" class="form-control" id="unit_number">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="unit_name" class="form-label">Street Name</label>
+                <input type="text" class="form-control" id="unit_name">
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto mb-2">
+                <button type="submit" class="btn btn-primary">Join</button>
+                <hr>
+                <button type="button" class="btn btn-secondary"><a href="/login" class="text-decoration-none"
+                        style="color: white;">Login</a></button>
+            </div>
+        </form>
+
+    </div>
