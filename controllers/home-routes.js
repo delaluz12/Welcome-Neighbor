@@ -57,4 +57,12 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+//GET dashboard page
+router.get('/dashboard', (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('dashboard');
+  return;
+  }
+});
+
 module.exports = router;
