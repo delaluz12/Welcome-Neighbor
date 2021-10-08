@@ -3,12 +3,15 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const cookieParser = require('cookie-parser')
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
 const app = express();
+app.use(cookieParser())
+
 
 const PORT = process.env.PORT || 3001;
 

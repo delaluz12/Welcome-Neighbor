@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Unit, Neighborhood} = require('../models');
-
 // Import the custom middleware
 const withAuth = require('../utils/auth');
-
 // GET data for the dashboard
 router.get('/', withAuth, async (req, res) => {
   try {
@@ -19,7 +17,6 @@ router.get('/', withAuth, async (req, res) => {
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
-
     const dbNeighborData = await Neighborhood.findAll({
       where: {
         // this is hardcoded for now until we know how it is coming from the webpage
@@ -35,11 +32,9 @@ router.get('/', withAuth, async (req, res) => {
             }],
           }]
     });
-
     const neighbors = dbNeighborData.map((neighbors) =>
       neighbors.get({ plain: true })
     );
-
     const dbHouseholdData = await Unit.findAll({
       where: {
         // this is hardcoded for now until we know how it is coming from the webpage
@@ -50,24 +45,20 @@ router.get('/', withAuth, async (req, res) => {
           model: Person,
           }]
     });
-
     const household = dbHouseholdData.map((household) =>
       household.get({ plain: true })
     );
-
     res.render('dashboard', {
       posts,
       neighbors,
       household,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, style:'dashboard'
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
 // GET all neighbors
 router.get('/neighbors', withAuth, async (req, res) => {
     try {
@@ -80,15 +71,13 @@ router.get('/neighbors', withAuth, async (req, res) => {
       const neighbors = dbNeighborData.map((neighbors) =>
         neighbors.get({ plain: true })
       );
-      res.render('homepage', {
+      res.render('dashboard', {
         neighbors,
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn, style:'dashboard'
       });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
-
-
 module.exports = router;
