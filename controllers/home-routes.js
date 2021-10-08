@@ -1,9 +1,34 @@
 const router = require('express').Router();
+const { Post, User, Person } = require('../models');
 
-// GET homepage
-router.get('/', (req, res) => {
-  res.render('homepage');
-  return;
+// GET all global posts for homepage
+router.get('/', async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+      where: {
+        visibility: 'global',
+      },
+      attributes: ['title', 'content', 'post_date_created'],
+
+      include: [{
+          model: User,
+          attributes:['email'],
+          include: [{
+              model: Person,
+              attributes: ['first_name', 'last_name']
+          }],
+        }]
+  });
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
+    res.render('homepage', {
+      posts
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // GET homepage - landing page with Join or Create
