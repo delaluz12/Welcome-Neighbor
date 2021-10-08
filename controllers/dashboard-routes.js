@@ -8,14 +8,22 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
-        include: [{
-            model: User,
-            include: [{
-                model: Unit,
-                include: Neighborhood
-            }],
-          }]
-    });
+      where: {
+        visibility: 'local',
+      },
+      attributes: ['title', 'content', 'post_date_created'],
+      include: [{
+          model: User,
+          attributes:['email'],
+          include: [{
+              model: Person,
+              attributes: ['first_name', 'last_name']
+          },
+          {
+            model: Unit,
+          }],
+        }]
+  });
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
