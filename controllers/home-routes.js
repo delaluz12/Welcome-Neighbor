@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
       post.get({ plain: true })
     );
     res.render('homepage', {
+      loggedIn: req.session.loggedIn,
       posts
     });
   } catch (err) {

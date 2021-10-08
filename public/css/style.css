@@ -21,8 +21,14 @@ main {
     color: white;
     background-color: darkgray;
 }
-.email-input {
+#email-login {
     margin-left: 1.7em;
+}
+#email-signup {
+    margin-left: 2em;
+}
+#password-signup {
+    margin-left: 0.2em;
 }
 .navbar-nav {
     margin: 10px;
