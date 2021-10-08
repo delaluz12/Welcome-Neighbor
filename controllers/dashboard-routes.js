@@ -52,7 +52,7 @@ router.get('/', withAuth, async (req, res) => {
       posts,
       neighbors,
       household,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, style:'dashboard'
     });
   } catch (err) {
     console.log(err);
@@ -71,9 +71,9 @@ router.get('/neighbors', withAuth, async (req, res) => {
       const neighbors = dbNeighborData.map((neighbors) =>
         neighbors.get({ plain: true })
       );
-      res.render('homepage', {
+      res.render('dashboard', {
         neighbors,
-        loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn, style:'dashboard'
       });
     } catch (err) {
       console.log(err);
