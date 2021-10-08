@@ -8,8 +8,10 @@
             <select class="form-select w-50 mb-3" id="avail_neighborhoods">
                 <option selected value="null">Choose your neighborhood</option>
                 {{!-- input db neighborhood data --}}
-                <option value="rollingHills_db_id" id="rollingHills">Rolling Hills</option>
-                <option value="cityPark_db_id" id="cityPark">City Park</option>
+                {{#each neighborhoods as |neighborhood|}}
+                {{> dropdownOptions}}
+
+                {{/each}}
 
             </select>
             <div class="mb-3 col-8">
@@ -38,3 +40,5 @@
         </form>
 
     </div>
+
+    <script src="/js/newNeighbor.js"></script>
