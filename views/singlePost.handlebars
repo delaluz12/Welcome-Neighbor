@@ -1,0 +1,21 @@
+<div class="container d-grid gap-3 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-10 mt-2">
+            <div class="card mb-2 ">
+                <div class="card-body">
+                    <h4 class="card-title" id="{{post.id}}">{{post.title}}</h4>
+                    <p class="card-subtitle mb-2 text-muted">Posted on {{format_date post.post_date_created}} by
+                        {{post.user.person.first_name}}</p>
+                    <p class="card-subtitle mb-2 text-muted">Neighborhood:
+                        {{post.user.person.unit.neighborhood.name}}</p>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-1 align-self-start mb-2">
+            <a href="/"> <button type="button" class="btn btn-outline-primary">Home </button></a>
+        </div>
+    </div>
+</div>

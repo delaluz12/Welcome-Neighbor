@@ -4,12 +4,14 @@
                 <h2> Sign-up to join a Neighborhood</h2>
             </div>
         </div>
-        <form class="row justify-content-center">
+        <form class="row justify-content-center neighbor-form">
             <select class="form-select w-50 mb-3" id="avail_neighborhoods">
                 <option selected value="null">Choose your neighborhood</option>
                 {{!-- input db neighborhood data --}}
-                <option value="rollingHills_db_id" id="rollingHills">Rolling Hills</option>
-                <option value="cityPark_db_id" id="cityPark">City Park</option>
+                {{#each neighborhoods as |neighborhood|}}
+                {{> dropdownOptions}}
+
+                {{/each}}
 
             </select>
             <div class="mb-3 col-8">
@@ -23,7 +25,7 @@
             </div>
             <div class="mb-3 col-8">
                 <label for="unit_number" class="form-label">House Number</label>
-                <input type="text" class="form-control" id="unit_number">
+                <input type="number" class="form-control" id="unit_number">
             </div>
             <div class="mb-3 col-8">
                 <label for="unit_name" class="form-label">Street Name</label>
@@ -38,3 +40,5 @@
         </form>
 
     </div>
+
+    <script src="/js/newNeighbor.js"></script>
