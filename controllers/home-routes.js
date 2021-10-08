@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Person, Neighborhood } = require('../models');
+const { Post, User, Person, Neighborhood, Unit } = require('../models');
 const withAuth = require('../utils/auth')
 // GET all global posts for homepage
 router.get('/', async (req, res) => {
@@ -8,27 +8,36 @@ router.get('/', async (req, res) => {
       where: {
         visibility: 'global',
       },
-      attributes: ['title', 'content', 'post_date_created'],
+      attributes: ['id', 'title', 'content', 'post_date_created'],
 
       include: [{
         model: User,
         attributes: ['email'],
         include: [{
           model: Person,
-          attributes: ['first_name', 'last_name']
+          attributes: ['first_name', 'last_name'],
+          include: [{
+            model: Unit,
+            attributes: ['neighborhood_id'],
+            include: [{
+              model: Neighborhood,
+              attributes: ['name'],
+            }]
+          }]
         }],
       }]
     });
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
+    // console.log(posts);
     res.render('homepage', {
       loggedIn: req.session.loggedIn,
       posts
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
@@ -102,9 +111,48 @@ router.get('/person', withAuth, (req, res) => {
 
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
+
+//single post view --must be logged in
+router.get('/globalposts/:id', withAuth, async (req, res) => {
+  try {
+    const dbPost = await Post.findByPk(req.params.id, {
+      where: {
+        visibility: 'global',
+      },
+      attributes: ['id', 'title', 'content', 'post_date_created'],
+      include: [{
+        model: User,
+        attributes: ['email'],
+        include: [{
+          model: Person,
+          attributes: ['first_name', 'last_name'],
+          include: [{
+            model: Unit,
+            attributes: ['neighborhood_id'],
+            include: [{
+              model: Neighborhood,
+              attributes: ['name'],
+            }]
+          }]
+        }],
+      }]
+    });
+    if (!dbPost) {
+      res.status(400).json({ message: 'No post found with that ID' });
+      return;
+    }
+    const post = dbPost.get({ plain: true });
+    // console.log(post);
+    res.render('singlePost', {  loggedIn: req.session.loggedIn, post });
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+})
 
 
 
