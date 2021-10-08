@@ -48,7 +48,7 @@ router.get('/neighborhoods', async (req, res) => {
     const dbNeighborData = await Neighborhood.findAll({
       where: {
         // this is hardcoded for now until we know how it is coming from the webpage
-        neighborhood_id: 1
+        id: 1,
       },
       attribute: ['id'],
       include: [{
@@ -82,6 +82,10 @@ router.get('/neighborhoods', async (req, res) => {
         attribute: ['id'],
         include: [{
             model: Person,
+            include: [{
+              model: User,
+              attributes: ['email'],
+            }]
             }]
       });
       const household = dbHouseholdData.map((household) =>

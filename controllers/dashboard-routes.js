@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Unit, Neighborhood} = require('../models');
+const { restore } = require('../models/Event');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 // GET data for the dashboard
@@ -88,4 +89,43 @@ router.get('/neighbors', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+//GET neighborhood roster page
+router.get('/roster', async (req, res) => {
+  try {
+    const dbUserData = await User.findAll({
+      where: {
+        id: 1
+      },
+      include: [
+        {
+          model: Unit,
+          attributes: ['neighborhood_id'],          
+        },
+      ],
+    });
+
+    const user = dbUserData.map((unit) =>
+      unit.get({ plain: true })
+    );
+    res.json(user);
+
+    // const dbUnitData = await Unit.findAll({
+    //   where: {
+    //     neighborhood_id: dbUserData.user.unit.neighborhood_id
+    //   },
+    // });
+
+    // const units = dbUnitData.map((unit) =>
+    //   unit.get({ plain: true})
+    //   );
+    //   res.render('roster', {
+    //     units,
+    //   });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
