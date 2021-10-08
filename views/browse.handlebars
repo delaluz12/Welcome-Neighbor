@@ -5,8 +5,9 @@
             <h6 class="text-center mb-2"> Available Neighborhoods to Join</h6>
             <ul class="list-group ">
                 {{!-- grab neighborhood names in db to display --}}
-                <li class="list-group-item">Rolling Hills</li>
-                <li class="list-group-item">City Park</li>
+                {{#each neighborhoods as |neighborhood|}}
+                {{> neighborhoodListItem}}
+                {{/each}}
 
             </ul>
         </div>
@@ -34,3 +35,4 @@
 
     </div>
 </div>
+

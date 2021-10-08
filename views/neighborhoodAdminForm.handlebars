@@ -4,14 +4,14 @@
                 <h2> Create Neighborhood Admin Account</h2>
             </div>
         </div>
-        <form class="row justify-content-center">
+        <form class="row justify-content-center admin-form">
             <div class="col-6 mb-3">
                 <label for="admin_email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="admin_emai" aria-describedby="emailHelp" placeholder="jonDoe@gmail.com">
+                <input type="email" class="form-control" id="admin_email" aria-describedby="emailHelp" placeholder="jonDoe@gmail.com">
             </div>
             <div class="col-6 mb-3">
                 <label for="admin_password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="admin_password" placeholder="must be at least 8 characters in length">
+                <input type="password" class="form-control" id="admin_password" placeholder="must be at least 6 characters in length">
             </div>
             <div class="col-12 mb-3">
                 <label for="neighborhood_name" class="form-label">Neighborhood Name</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-4 mb-3">
                 <label for="neighborhood_state" class="form-label">State</label>
-                <input type="text" class="form-control" id="neighborhood_state" placeholder="Wisconsin">
+                <input type="text" class="form-control" id="neighborhood_state" placeholder="WI">
             </div>
             <div class="col-4 mb-3">
                 <label for="neighborhood_zip" class="form-label">Zip Code</label>
@@ -43,3 +43,5 @@
             </div>
         </form>
     </div>
+
+    <script src="/js/neighborhoodAdmin.js"></script>

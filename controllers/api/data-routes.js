@@ -157,4 +157,18 @@ router.get('/localposts', async (req, res) => {
 }); 
 
 
+//Get neighborhoods for homepage --name and id to pass back for new neighbor creation
+router.get('/dropdown', async (req, res)=> {
+  try {
+    const dbData = await Neighborhood.findAll({
+      attributes: ['id','name'],
+    });
+    res.status(200).json(dbData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;
