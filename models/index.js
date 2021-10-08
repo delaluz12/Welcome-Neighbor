@@ -43,6 +43,14 @@ Unit.hasMany(Person, {
     foreignKey: 'unit_id',
 });
 
+Person.belongsTo(User, {
+    foreignKey: 'user_id',
+})
+
+User.hasOne(Person, {
+    foreignKey: 'user_id',
+})
+
 Post.belongsTo(User, {
     foreignKey: 'post_user_id',
     onDelete: 'CASCADE'
