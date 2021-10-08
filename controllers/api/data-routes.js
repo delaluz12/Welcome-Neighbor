@@ -94,4 +94,63 @@ router.get('/neighborhoods', async (req, res) => {
       }
   });
 
+ // GET all global posts for homepage
+router.get('/globalposts', async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+        where: {
+          visibility: 'global',
+        },
+        attributes: ['title', 'content', 'post_date_created'],
+
+        include: [{
+            model: User,
+            attributes:['email'],
+            include: [{
+                model: Person,
+                attributes: ['first_name', 'last_name']
+            }],
+          }]
+    });
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
+    res.json(posts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}); 
+
+// GET all local posts for dashboard
+router.get('/localposts', async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+        where: {
+          visibility: 'local',
+        },
+        attributes: ['title', 'content', 'post_date_created'],
+        include: [{
+            model: User,
+            attributes:['email'],
+            include: [{
+                model: Person,
+                attributes: ['first_name', 'last_name']
+            },
+            {
+              model: Unit,
+            }],
+          }]
+    });
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
+    res.json(posts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}); 
+
+
 module.exports = router;
