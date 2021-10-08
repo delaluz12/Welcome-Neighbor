@@ -1,0 +1,26 @@
+<div class="openBtn">
+      <button class="openButton" onclick="openForm()"><strong>Update Profile</strong></button>
+    </div>
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form action="/action_page.php" class="formContainer">
+          <h4>Update your personal information</h4>
+
+            <input type="text" id="email" placeholder="Your Email" name="email">
+
+            <input type="password" id="psw" placeholder="Your Password" name="psw">
+
+          <h4>Add a new individual to unit</h4>
+
+             <input type="text" id="newIndF" placeholder="First Name" name="first">
+
+             <input type="text" id="newIndL" placeholder="Last Name" name="last">
+
+            <input type="text" id="indUnit" placeholder="Unit" name="psw"> 
+
+          <button type="submit" class="btn">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/pop-up.js"></script>

@@ -11,8 +11,7 @@ router.post('/', async (req, res) => {
       unit_number: req.body.unit_number,
       unit_name: req.body.street,
       neighborhood_id: req.body.neighborhood_id,
-      created_at: 'null',
-      updated_at: 'null'
+      
 
     });
 
