@@ -3,32 +3,30 @@
         <div class="col-10 header">
             <h2 class="text-center"> Add Post</h2>
         </div>
-
-        <form class="row justify-content-center newpost-form"
-            data-user_id="{{user_id}}" id='newPost'>
-            <div class="col-12 mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title>
-            </div>
-            <div class="col-12 mb-3">
-                <label for="content" class="form-label">Content</label>
-                <textarea type="text" class="form-control" id="content" rows="6"></textarea>
-            </div>
-            <div class="col-12 mb-3">
-                <label for="content" class="form-label">Choose whether post will be visable to all neighborhoods</label>
-                <select class="form-select" id="visibility">
-                    <option selected value="null">Choose who can view post </option>
-                    <option value="global" id="global">Global</option>
-                    <option value="local" id="local">Local</option>
-                    
-                </select>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto mb-2">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-
     </div>
+    <form class="row justify-content-center newpost-form"  id="newPost">
+        <div class="col-12 mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="post_title">
+        </div>
+            
+        <div class="col-12 mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea type="text" class="form-control" id="post_content" rows="6"></textarea>
+        </div>
+        <div class="col-12 mb-3">
+            <label for="content" class="form-label">Choose whether post will be visable to all neighborhoods</label>
+            <select class="form-select" id="visibility">
+                <option selected value="null">Choose who can view post </option>
+                <option value="global" id="global">Global</option>
+                <option value="local" id="local">Local</option>
+
+            </select>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mb-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </div>
 
 <script src="/js/newPost.js"></script>
