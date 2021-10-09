@@ -26,7 +26,7 @@ const newNeighborFormHandler = async (event) => {
             console.log(response);
 
             if (response.ok) {
-                document.location.replace('/person');
+                document.location.replace('/newUserProfile');
             } else {
                 alert('Failed to sign up.');
             }
