@@ -26,7 +26,7 @@ router.get('/', withAuth, async (req, res) => {
         }],
       }]
     });
-    console.log(dbPostData);
+    // console.log(dbPostData);
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );

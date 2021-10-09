@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       where: {
         visibility: 'global',
       },
-      attributes: ['id', 'title', 'content', 'created_at'],
+      attributes: ['id', 'title', 'content', 'created_at','visibility'],
 
       include: [{
         model: User,
