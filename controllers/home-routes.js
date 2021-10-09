@@ -92,13 +92,13 @@ router.get('/neighbor', async (req, res) => {
   res.render('neighborForm', { neighborhoods });
 });
 
-//GET dashboard page
-router.get('/dashboard', (req, res) => {
-  if (req.session.loggedIn) {
-    res.render('dashboard',{loggedIn: req.session.loggedIn});
-    return;
-  } res.render('/login');
-});
+// //GET dashboard page
+// router.get('/dashboard', (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.render('dashboard',{loggedIn: req.session.loggedIn});
+//     return;
+//   } res.render('/login');
+// });
 
 //GET person Form
 router.get('/newUserProfile', withAuth, async (req, res) => {
