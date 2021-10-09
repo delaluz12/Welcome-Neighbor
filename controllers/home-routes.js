@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       where: {
         visibility: 'global',
       },
-      attributes: ['id', 'title', 'content', 'post_date_created'],
+      attributes: ['id', 'title', 'content', 'created_at'],
 
       include: [{
         model: User,
@@ -130,7 +130,7 @@ router.get('/globalposts/:id', withAuth, async (req, res) => {
       where: {
         visibility: 'global',
       },
-      attributes: ['id', 'title', 'content', 'post_date_created'],
+      attributes: ['id', 'title', 'content', 'created_at'],
       include: [{
         model: User,
         attributes: ['email'],
