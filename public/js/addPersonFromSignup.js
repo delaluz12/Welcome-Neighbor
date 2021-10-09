@@ -1,20 +1,20 @@
-const newPersonFromSignupFormHandler = (event) => {
+const newPersonFromSignupFormHandler = async (event) => {
     event.preventDefault();
     const formEl = document.getElementById('data');
     // console.log(formEl);
 
 
-    const user_id = formEl.getAttribute('data-user_id');
-    const unit_id = formEl.getAttribute('data-unit_id');
+    const user_id = parseInt(formEl.getAttribute('data-user_id'));
+    const unit_id = parseInt(formEl.getAttribute('data-unit_id'));
 
-    const first = document.getElementById('first_name').value.trim();
-    const last = document.getElementById('last_name').value.trim();
+    const first_name = document.getElementById('first_name').value.trim();
+    const last_name = document.getElementById('last_name').value.trim();
     // console.log(first);
     // console.log(last);
 
 
     const e = document.getElementById('person_type');
-    const type = e.options[e.selectedIndex].value;
+    const person_type = e.options[e.selectedIndex].value;
     const phoneEl = document.getElementById('phone').value.trim();
     const phone=phoneEl.replace(/[^0-9]/g,'');
     const cellEl = document.getElementById('cell').value.trim();
@@ -27,13 +27,13 @@ const newPersonFromSignupFormHandler = (event) => {
     // console.log(typeof birthday);
 
 
-    // console.log(unit_id);
-    // console.log(user_id);
+    // console.log(typeof unit_id);
+    // console.log(typeof user_id);
 
-    if (first && last && type && phone && cell && birthday && user_id && unit_id) {
-        const response = await fetch('/api/post/', {
+    if (first_name && last_name && person_type && phone && cell && birthday && user_id && unit_id) {
+        const response = await fetch('/api/person/', {
             method: 'POST',
-            body: JSON.stringify({ first, last, type, phone, cell, birthday, user_id, unit_id }),
+            body: JSON.stringify({ first_name, last_name, person_type, phone, cell, birthday, user_id, unit_id }),
             headers: { 'Content-Type': 'application/json' },
         });
         console.log(response);
