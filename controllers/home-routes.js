@@ -101,13 +101,21 @@ router.get('/dashboard', (req, res) => {
 });
 
 //GET person Form
-router.get('/person', withAuth, (req, res) => {
+router.get('/newUserProfile', withAuth, async (req, res) => {
   try {
     // must be logged in to access person form
     if (!req.session.loggedIn) {
       res.redirect('/login')
     }
-    res.render('personForm', { loggedIn: req.session.loggedIn })
+    const dbData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+      attributes: ['id', 'unit_id'],
+    });
+    const userData = dbData.get({ plain: true });
+    console.log(userData);
+    res.render('personForm', {userData, loggedIn: req.session.loggedIn })
 
   } catch (err) {
     console.log(err);
@@ -146,7 +154,7 @@ router.get('/globalposts/:id', withAuth, async (req, res) => {
     }
     const post = dbPost.get({ plain: true });
     // console.log(post);
-    res.render('singlePost', {  loggedIn: req.session.loggedIn, post });
+    res.render('singlePost', { loggedIn: req.session.loggedIn, post });
 
   } catch (err) {
     console.log(err);
