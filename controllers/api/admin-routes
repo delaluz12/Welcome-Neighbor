@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-
-const { Console } = require('console');
-const { Neighborhood, Unit, User} = require('../../models');
+const session = require('express-session');
+const { Neighborhood, Unit, User } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 // CREATE new neighborhood, admin and unit
 router.post('/', async (req, res) => {
@@ -13,56 +13,80 @@ router.post('/', async (req, res) => {
       city: req.body.city,
       state: req.body.state,
       zip: req.body.zip,
-      
+
 
     });
 
-    const newhood= await Neighborhood.findOne({
+    const newhood = await Neighborhood.findOne({
       attributes: ['id'],
-      where :{name: req.body.name,
-              zip: req.body.zip },
-              raw: true, 
+      where: {
+        name: req.body.name,
+        zip: req.body.zip
+      },
+      raw: true,
     })
 
-    console.log(newhood.id)
+
 
     const dbUnit = await Unit.create({
-        unit_number: req.body.unit_number,
-        unit_name: req.body.street,
-        neighborhood_id: newhood.id,
-        created_at: 'null',
-        updated_at: 'null'
-  
-      });
-  
-      const newunit= await Unit.findOne({
-        attributes: ['id'],
-        where :{unit_number:req.body.unit_number,
-                unit_name: req.body.street },
-                raw: true, 
-      })
+      unit_number: req.body.unit_number,
+      unit_name: req.body.street,
+      neighborhood_id: newhood.id,
+      created_at: 'null',
+      updated_at: 'null'
 
-  
+    });
+
+    const newunit = await Unit.findOne({
+      attributes: ['id'],
+      where: {
+        unit_number: req.body.unit_number,
+        unit_name: req.body.street
+      },
+      raw: true,
+    })
+
+
     const dbUserData = await User.create({
       email: req.body.email,
       password: req.body.password,
       role_id: req.body.role_id,
       unit_id: newunit.id
-  });
+    });
 
-req.session.save(() => {
-  req.session.loggedIn = true;
-  req.session.user_id = dbUserData.id;
-  req.session.role= dbUserData.role_id
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
+      req.session.role = dbUserData.role_id
+      console.log(req.session.role)
 
-  res.status(200).json(dbUserData,);
-});
+      res.status(200).json(dbUserData,);
+    });
   } catch (err) {
-  console.log(err);
-  res.status(500).json(err);
-}
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-  
+router.delete('/:id', async (req, res) => {
+  try {
+    const delHood = await Neighborhood.destroy({
+      where: {
+        id: req.params.id
+      },
+    });
+    console.log(delHood)
+    if (!delHood) {
+      res.status(404).json({ message: "No neighborhood with that ID found" });
+    }
+    res.status(200).json({ message: "Neighborhood successfully deleted!" });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
+})
+
 
 module.exports = router;

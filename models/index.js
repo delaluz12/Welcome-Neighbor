@@ -19,6 +19,7 @@ Role.hasMany(User, {
 
 User.belongsTo(Unit, {
     foreignKey: 'unit_id',
+    onDelete: 'CASCADE'
 })
 
 Unit.hasMany(User, {
