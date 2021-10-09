@@ -4,11 +4,13 @@
                 <h2> Create Profile</h2>
             </div>
 
-            <form class="row justify-content-center person-form">
+            <form class="row justify-content-center person-form" data-unit_id="{{userData.unit_id}}" data-user_id="{{userData.id}}" id='data'>
                 <div class="col-6 mb-3">
                     <label for="first_name" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="first_name">
                 </div>
+                <div class="visually-hidden" id="unit_id" data-unit_id="{{userData.unit_id}}"></div>
+                <div class="visually-hidden" id="user_id" data-user_id="{{userData.id}}"></div>
                 <div class="col-6 mb-3">
                     <label for="last_name" class="form-label">Last Name</label>
                     <input type="text" class="form-control" id="last_name">
@@ -40,3 +42,5 @@
 
         </div>
     </div>
+
+    <script src="/js/addPersonFromSignup.js"></script>

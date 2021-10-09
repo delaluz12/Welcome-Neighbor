@@ -1,11 +1,12 @@
 <div class="container my-5">
         <div class="row justify-content-center mb-4">
-            <div class=" col-6 header">
+            <div class=" col-xxl-6 col-lg-8 col-md-10 col-10 header">
                 <h2> Sign-up to join a Neighborhood</h2>
             </div>
         </div>
         <form class="row justify-content-center neighbor-form">
-            <select class="form-select w-50 mb-3" id="avail_neighborhoods">
+            <div class="mb-3 col-xl-8">
+            <select class="form-select mb-3" id="avail_neighborhoods">
                 <option selected value="null">Choose your neighborhood</option>
                 {{!-- input db neighborhood data --}}
                 {{#each neighborhoods as |neighborhood|}}
@@ -14,24 +15,25 @@
                 {{/each}}
 
             </select>
-            <div class="mb-3 col-8">
+            </div>
+            <div class="mb-3 col-xl-8">
                 <label for="neighbor_email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="neighbor_email" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-            <div class="mb-3 col-8">
+            <div class="mb-3 col-xl-8">
                 <label for="neighbor_password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="neighbor_password">
+                <input type="password" class="form-control" id="neighbor_password" placeholder="must be 6 characters long">
             </div>
-            <div class="mb-3 col-8">
+            <div class="mb-3 col-xl-8">
                 <label for="unit_number" class="form-label">House Number</label>
                 <input type="number" class="form-control" id="unit_number">
             </div>
-            <div class="mb-3 col-8">
+            <div class="mb-3 col-xl-8">
                 <label for="unit_name" class="form-label">Street Name</label>
                 <input type="text" class="form-control" id="unit_name">
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto mb-2">
+            <div class="d-grid gap-2 col-xl-6 mx-auto mb-2">
                 <button type="submit" class="btn btn-primary">Join</button>
                 <hr>
                 <button type="button" class="btn btn-secondary"><a href="/login" class="text-decoration-none"

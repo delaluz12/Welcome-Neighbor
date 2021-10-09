@@ -1,8 +1,8 @@
 {{!-- displays neighborhoods in db & displays join/create options for User --}}
 <div class="container d-grid gap-3 my-5">
     <div class="row justify-content-center">
-        <div class="col-5">
-            <h6 class="text-center mb-2"> Available Neighborhoods to Join</h6>
+        <div class="col-xxl-5 col-12">
+            <h6 class="text-center my-2"> Available Neighborhoods to Join</h6>
             <ul class="list-group ">
                 {{!-- grab neighborhood names in db to display --}}
                 {{#each neighborhoods as |neighborhood|}}
@@ -11,20 +11,23 @@
 
             </ul>
         </div>
-        <div class=" col-6">
+        
+        <div class=" col-xxl-6 col-12">
+            <hr class="myclass">
             <div class="row">
                 <div class="col my-4 ">
-                    <span class="text-muted"> See your neighborhood? Sign-up and join to connect with
-                        neighbors</span>
+                    <p class="text-muted text-center"> See your neighborhood? Sign-up and join to connect with
+                        neighbors</p>
                         {{!-- on click render neighbor FORM --}}
                     <a href="/neighbor" class="d-flex justify-content-center text-decoration-none my-2"><button
                             type="button" class="btn btn-primary">Join
                             Neighborhood</button></a>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col my-4">
-                    <span class="text-muted"> Don't see your neighborhood? Sign-up and create a Neighborhood</span>
+                    <p class="text-muted text-center"> Don't see your neighborhood? Sign-up and create a Neighborhood</p>
                     {{!-- on click render admin FORM --}}
                     <a href="/admin" class="d-flex justify-content-center text-decoration-none my-2"><button
                             type="button" class="btn btn-outline-primary">Create
