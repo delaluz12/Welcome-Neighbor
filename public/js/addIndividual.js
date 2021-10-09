@@ -1,10 +1,10 @@
 async function addInd(event) {
     event.preventDefault();
-    const firstName = document.querySelector('#newIndF').value;
-    const lastName = document.querySelector('#newIndL').value;
+    const first_name = document.querySelector('#newIndF').value;
+    const last_name = document.querySelector('#newIndL').value;
    
-    // Send fetch request to add a new dish
-    const response = await fetch(`/api/dish`, {
+    //fetch request to add a new person
+    const response = await fetch(`/api/person/`, {
       method: 'POST',
       body: JSON.stringify({
         first_name,
