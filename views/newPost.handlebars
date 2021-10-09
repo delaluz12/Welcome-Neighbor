@@ -1,0 +1,46 @@
+<div class="container my-5">
+        <div class="row justify-content-center mb-4">
+            <div class=" col-3 header">
+                <h2> Create Profile</h2>
+            </div>
+
+            <form class="row justify-content-center person-form" data-unit_id="{{userData.unit_id}}" data-user_id="{{userData.id}}" id='data'>
+                <div class="col-6 mb-3">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name">
+                </div>
+                <div class="visually-hidden" id="unit_id" data-unit_id="{{userData.unit_id}}"></div>
+                <div class="visually-hidden" id="user_id" data-user_id="{{userData.id}}"></div>
+                <div class="col-6 mb-3">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name">
+                </div>
+                <div class="col-12 mb-3">
+                    <select class="form-select" id="person_type">
+                        <option selected value="null">I am a </option>
+                        <option value="adult" id="adult">Adult</option>
+                        <option value="child" id="pet">Child</option>
+                        <option value="pet" id="pet">Pet</option>
+                    </select>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="cell" class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-control" id="cell">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="birthday" class="form-label">Birthday</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday">
+                </div>
+                <div class="d-grid gap-2 col-4 mx-auto mb-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="/js/addPersonFromSignup.js"></script>
