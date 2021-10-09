@@ -93,23 +93,6 @@ router.get('/neighbors', withAuth, async (req, res) => {
 //GET neighborhood roster page
 router.get('/roster', async (req, res) => {
   try {
-    // const dbUserData = await User.findAll({
-    //   where: {
-    //     id: 1
-    //   },
-    //   include: [
-    //     {
-    //       model: Unit,
-    //       attributes: ['neighborhood_id'],          
-    //     },
-    //   ],
-    // });
-
-    // const user = dbUserData.map((unit) =>
-    //   unit.get({ plain: true })
-    // );
-    // res.json(user);
-
     const dbUnitData = await Unit.findAll({
       where: {
         neighborhood_id: 1
