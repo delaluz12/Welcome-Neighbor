@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 
+const withAuth = require('../../utils/auth')
 const { User, Unit } = require('../../models');
 
 // CREATE new user and unit
@@ -11,40 +12,51 @@ router.post('/', async (req, res) => {
       unit_number: req.body.unit_number,
       unit_name: req.body.street,
       neighborhood_id: req.body.neighborhood_id,
-      
+
 
     });
 
-    const newunit= await Unit.findOne({
+    const newunit = await Unit.findOne({
       attributes: ['id'],
-      where :{unit_number:req.body.unit_number,
-              unit_name: req.body.street },
-              raw: true, 
+      where: {
+        unit_number: req.body.unit_number,
+        unit_name: req.body.street
+      },
+      raw: true,
     })
 
-  
+
     const dbUserData = await User.create({
       email: req.body.email,
       password: req.body.password,
       role_id: req.body.role_id,
       unit_id: newunit.id
-  });
+    });
 
-req.session.save(() => {
-  req.session.loggedIn = true;
-  req.session.user_id = dbUserData.id;
 
-  res.status(200).json(dbUserData);
-});
+
+
+
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
+      req.session.unit_id = dbUserData.unit_id
+      req.session.neighborhood_id = req.body.neighborhood_id,
+
+        res.status(200).json(dbUserData);
+    });
   } catch (err) {
-  console.log(err);
-  res.status(500).json(err);
-}
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-  
- 
-router.delete('/:id', async (req, res) => {
+
+
+
+
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -88,9 +100,23 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+
+    const hood = await Unit.findOne({
+      attributes: ['neighborhood_id'],
+      where: {
+        id: dbUserData.unit_id
+      },
+
+      raw: true,
+    })
+
+
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
+      req.session.unit_id = dbUserData.unit_id;
+      req.session.neighborhood_id = hood.neighborhood_id
+
 
       res
         .status(200)
