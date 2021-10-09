@@ -8,15 +8,6 @@
 img {
     width: 100%;
 }
-.profilePic {
-    display: flex ;
-    background-image:url(placeholder.png) ;
-    background-repeat: var(--bg-repeat);
-    background-size: 200px 100px;
-    background-position-x: var(--bg-p-x);
-    border-radius: 50px;
-}
-
 
 /*Pop-up styling*/
 
@@ -90,7 +81,7 @@ img {
 
   /*posts*/
 
-.posts {
+.posts2 {
     margin:50px 100px 50px 100px;
     padding-right: 100px;
 }
@@ -100,7 +91,7 @@ img {
     margin-top: 80px;
 }
 
-.bar {
+#bar {
     background-color: rgb(230, 127, 17);
 }
 /* Scrollbar styling*/

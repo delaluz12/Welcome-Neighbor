@@ -1,4 +1,4 @@
-<div class="bar"></div>
+<div id="bar"></div>
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
@@ -36,15 +36,16 @@
       </div>
     </div>
     <script src="./js/pop-up.js"></script> 
-      
-
+  
+  
+  <button id="neighbors" class="btn"> My Neighbours</button>
 
     </div>
-    <div class="col-sm-9" class="posts">
+    <div class="col-sm-9" class="posts2">
       <h3 class="postTitle">POSTS</h3>
           {{#each posts as |post|}}
             {{!- #if}}
-            <div class="posts">
+            <div id="posts">
                 <h5>{{post.title}}</h5>
                 <p>
                     {{post.content}}
@@ -53,6 +54,8 @@
                 </p>
              </div>  
           {{/each}}
+
+          <button id="newPost" class="btn"> Create New Post</button>
     </div>
   </div>
 </div>
