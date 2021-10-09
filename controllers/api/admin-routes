@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
       req.session.role = dbUserData.role_id
-      console.log(req.session.role)
+      
 
       res.status(200).json(dbUserData,);
     });
@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',withAuth, async (req, res) => {
   try {
     const delHood = await Neighborhood.destroy({
       where: {
