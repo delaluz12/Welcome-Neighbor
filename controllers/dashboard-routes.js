@@ -80,9 +80,9 @@ router.get('/neighbors', withAuth, async (req, res) => {
     const neighbors = dbNeighborData.map((neighbors) =>
       neighbors.get({ plain: true })
     );
-    res.render('dashboard', {
+    res.render('roster', {
       neighbors,
-      loggedIn: req.session.loggedIn, style: 'dashboard'
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);

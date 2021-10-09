@@ -1,7 +1,8 @@
+<div class="bar"></div>
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-        1
+        
         <div class="profilePic">
             <img src="/images/placeholder.png">
         </div>
@@ -9,12 +10,38 @@
             <h3>{{person.first_name}}</h3>
         </div>
 
-        {{> pop-up}}
+       <div class="openBtn">
+      <button class="openButton" onclick="openForm()"><strong>Update Profile</strong></button>
     </div>
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-6 col-sm-6">
-            2
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+        <form action="/action_page.php" class="formContainer">
+          <h4>Update your personal information</h4>
+
+            <input type="text" id="email" placeholder="Your Email" name="email">
+
+            <input type="password" id="psw" placeholder="Your Password" name="psw">
+
+          <h4>Add a new individual to unit</h4>
+
+             <input type="text" id="newIndF" placeholder="First Name" name="first">
+
+             <input type="text" id="newIndL" placeholder="Last Name" name="last">
+
+            <input type="text" id="indUnit" placeholder="Unit" name="psw"> 
+
+          <button type="submit" class="btn">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/pop-up.js"></script> 
+      
+
+
+    </div>
+    <div class="col-sm-9" class="posts">
+      <h3 class="postTitle">POSTS</h3>
           {{#each posts as |post|}}
             {{!- #if}}
             <div class="posts">
@@ -26,17 +53,6 @@
                 </p>
              </div>  
           {{/each}}
-        </div>
-        <div class="col-6 col-sm-6">
-            3
-         {{#each neighbors as |neighbor|}}
-            <div class="neighbors">
-                <p class="household">{{neighbor.first_name}}</p><p>{{neighbor.last_name}}</p>
-
-            </div>
-        {{/each}}
-        </div>
-      </div>
     </div>
   </div>
 </div>
