@@ -125,7 +125,15 @@ router.get('/roster', withAuth, async (req, res) => {
   }
 });
 
-
+//POST new post
+router.get('/newpost', withAuth, (req, res) =>{
+  try {
+    
+  } catch (err) {
+    console.log(err);
+        res.status(400).json(err);
+  }
+})
 
 
 module.exports = router;
