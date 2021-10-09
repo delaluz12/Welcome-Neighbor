@@ -47,7 +47,7 @@ router.get('/household', withAuth, async (req, res) => {
 
     const dbHouseholdData = await Unit.findAll({
       where: {
-        neighborhood_id: 1
+        neighborhood_id: req.session.neighborhood_id
       },
       attribute: ['id'],
       include: [{
