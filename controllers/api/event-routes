@@ -1,19 +1,20 @@
 const router = require('express').Router();
 
-const {Post} = require('../../models');
+const {Event} = require('../../models');
 const withAuth = require('../../utils/auth')
 
 //create
 router.post('/', withAuth,  async (req, res) => {
     try {
-        const newPost = await Post.create({
+        const newEvent = await Event.create({
             title: req.body.title,
             content: req.body.content,
             visibility: req.body,
-             user_id: req.session.user_id,
+            event_user_id: req.session.user_id,
+            event_date: req.session.event_date
         });
 
-        res.status(200).json(newPost);
+        res.status(200).json(newEvent);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -23,17 +24,18 @@ router.post('/', withAuth,  async (req, res) => {
 //update
 router.put('/:id', withAuth, async (req, res)=> {
     try {
-        const updatePost = await Post.update( {
+        const updateEvent = await Event.update( {
             title: req.body.title,
             content: req.body.content,
-            visibility: req.body.visibility
+            visibility: req.body.visibility,
+            event_date: req.session.event_date
         }, {
             where: {id: req.params.id}
         });
-        if(!updatePost){
-            res.status(404).json({message : "No Post found with that ID"})
+        if(!updateEvent){
+            res.status(404).json({message : "No Event found with that ID"})
         }
-        res.status(200).json({message : "Post successfully updated!"});
+        res.status(200).json({message : "Event successfully updated!"});
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -43,15 +45,15 @@ router.put('/:id', withAuth, async (req, res)=> {
 //delete
 router.delete('/:id', withAuth, async (req, res)=> {
     try {
-        const delPost = await Post.destroy({
+        const delEvent = await Event.destroy({
             where:{ 
             id: req.params.id
             },
         });
-        if(!delPost){
-            res.status(404).json({message : "No post with that ID found"});
+        if(!delEvent){
+            res.status(404).json({message : "No Event with that ID found"});
         }
-        res.status(200).json({message: "Post successfully deleted!"});
+        res.status(200).json({message: "Event successfully deleted!"});
         
     } catch (err) {
         console.log(err);
