@@ -42,7 +42,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // GET household data for the dashboard
-router.get('/household', async (req, res) => {
+router.get('/household', withAuth, async (req, res) => {
   try {
    
     const dbHouseholdData = await Unit.findAll({
@@ -91,7 +91,7 @@ router.get('/neighbors', withAuth, async (req, res) => {
 });
 
 //GET neighborhood roster page
-router.get('/roster', async (req, res) => {
+router.get('/roster', withAuth, async (req, res) => {
   try {
     const dbUnitData = await Unit.findAll({
       where: {
@@ -124,5 +124,8 @@ router.get('/roster', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
 
 module.exports = router;
