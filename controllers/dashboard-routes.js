@@ -44,7 +44,7 @@ router.get('/', withAuth, async (req, res) => {
 // GET household data for the dashboard
 router.get('/household', withAuth, async (req, res) => {
   try {
-   
+
     const dbHouseholdData = await Unit.findAll({
       where: {
         neighborhood_id: 1
@@ -58,7 +58,7 @@ router.get('/household', withAuth, async (req, res) => {
       household.get({ plain: true })
     );
     res.render('dashboard', {
-    household, 
+      household,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -105,7 +105,7 @@ router.get('/roster', withAuth, async (req, res) => {
             {
               model: User,
               // order: ['type'],
-              attributes: ['email'],          
+              attributes: ['email'],
             },
           ],
         },
@@ -126,12 +126,12 @@ router.get('/roster', withAuth, async (req, res) => {
 });
 
 //POST new post
-router.get('/newpost', withAuth, (req, res) =>{
+router.get('/newpost', withAuth, (req, res) => {
   try {
-    
+    if()
   } catch (err) {
     console.log(err);
-        res.status(400).json(err);
+    res.status(400).json(err);
   }
 })
 
