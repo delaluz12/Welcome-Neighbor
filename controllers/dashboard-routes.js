@@ -118,12 +118,13 @@ router.get('/roster', async (req, res) => {
         {
           model: Person,
           order: ['type'],
-      include: [
-        {
-          model: User,
-          attributes: ['email'],          
-        },
-      ],
+          include: [
+            {
+              model: User,
+              order: ['type'],
+              attributes: ['email'],          
+            },
+          ],
         },
       ],
     });
