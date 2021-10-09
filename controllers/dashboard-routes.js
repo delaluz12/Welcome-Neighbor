@@ -10,7 +10,7 @@ router.get('/', withAuth, async (req, res) => {
       where: {
         visibility: 'local',
       },
-      attributes: ['title', 'content', 'post_date_created'],
+      attributes: ['title', 'content', 'created_at'],
       include: [{
         model: User,
         attributes: ['email'],
@@ -44,7 +44,7 @@ router.get('/', withAuth, async (req, res) => {
 // GET household data for the dashboard
 router.get('/household', withAuth, async (req, res) => {
   try {
-   
+
     const dbHouseholdData = await Unit.findAll({
       where: {
         neighborhood_id: 1
@@ -58,7 +58,7 @@ router.get('/household', withAuth, async (req, res) => {
       household.get({ plain: true })
     );
     res.render('dashboard', {
-    household, 
+      household,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -105,7 +105,7 @@ router.get('/roster', withAuth, async (req, res) => {
             {
               model: User,
               // order: ['type'],
-              attributes: ['email'],          
+              attributes: ['email'],
             },
           ],
         },
@@ -122,5 +122,20 @@ router.get('/roster', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//POST new post
+router.get('/newpost', withAuth, (req, res) => {
+  try {
+    if(!req.session.loggedIn){
+      res.render('/login');
+    }
+    res.render('newPost', {loggedIn: req.session.loggedIn});
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+})
+
 
 module.exports = router;

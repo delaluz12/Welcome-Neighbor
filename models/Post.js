@@ -24,10 +24,6 @@ Post.init(
         allowNull: false,
         defaultValue: 'local',
     },
-    post_date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     post_user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -40,7 +36,7 @@ Post.init(
   {
     sequelize,
     freezeTableName: true,
-    timestamps: false,
+    timestamps: true,
     underscored: true,
     modelName: 'post',
   }
