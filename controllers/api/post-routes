@@ -1,16 +1,16 @@
 const router = require('express').Router();
 
-const {Post} = require('../../models');
+const { Post } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 //create
-router.post('/', withAuth,  async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
             title: req.body.title,
             content: req.body.content,
-            visibility: req.body,
-             user_id: req.session.user_id,
+            visibility: req.body.visibility,
+            post_user_id: req.session.user_id,
         });
 
         res.status(200).json(newPost);
@@ -21,19 +21,19 @@ router.post('/', withAuth,  async (req, res) => {
 });
 
 //update
-router.put('/:id', withAuth, async (req, res)=> {
+router.put('/:id', withAuth, async (req, res) => {
     try {
-        const updatePost = await Post.update( {
+        const updatePost = await Post.update({
             title: req.body.title,
             content: req.body.content,
             visibility: req.body.visibility
         }, {
-            where: {id: req.params.id}
+            where: { id: req.params.id }
         });
-        if(!updatePost){
-            res.status(404).json({message : "No Post found with that ID"})
+        if (!updatePost) {
+            res.status(404).json({ message: "No Post found with that ID" })
         }
-        res.status(200).json({message : "Post successfully updated!"});
+        res.status(200).json({ message: "Post successfully updated!" });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -41,18 +41,18 @@ router.put('/:id', withAuth, async (req, res)=> {
 });
 
 //delete
-router.delete('/:id', withAuth, async (req, res)=> {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const delPost = await Post.destroy({
-            where:{ 
-            id: req.params.id
+            where: {
+                id: req.params.id
             },
         });
-        if(!delPost){
-            res.status(404).json({message : "No post with that ID found"});
+        if (!delPost) {
+            res.status(404).json({ message: "No post with that ID found" });
         }
-        res.status(200).json({message: "Post successfully deleted!"});
-        
+        res.status(200).json({ message: "Post successfully deleted!" });
+
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
