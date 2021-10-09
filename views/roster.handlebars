@@ -1,4 +1,6 @@
-{{#each unit}}
+<h1>Neighborhood Roster</h1>
+
+{{#each units}}
 <h3>{{unit_number}} {{unit_name}}</h3>
 <table class="table">
     <thead>
@@ -14,13 +16,13 @@
     <tbody>
         {{#each people}}
         <tr>
-            <th scope="row"></th>
+            {{!-- <th scope="row"></th> --}}
             <td>{{type}}</td>
             <td>{{first_name}}</td>
             <td>{{last_name}}</td>
             <td>{{phone}}</td>
             <td>{{cell}}</td>
-            <td><a href="mailto:{{email}}">{{email}}</a></td>
+            <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
         </tr>
         {{/each}}
     </tbody>
