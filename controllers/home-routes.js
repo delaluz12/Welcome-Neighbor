@@ -50,7 +50,7 @@ router.get('/browse', async (req, res) => {
     const neighborhoods = dbNeighborhoods.map((neighborhood) =>
       neighborhood.get({ plain: true })
     );
-    res.render('browse', { neighborhoods });
+    res.render('browse', { neighborhoods, loggedIn : req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -95,9 +95,9 @@ router.get('/neighbor', async (req, res) => {
 //GET dashboard page
 router.get('/dashboard', (req, res) => {
   if (req.session.loggedIn) {
-    res.render('dashboard');
+    res.render('dashboard',{loggedIn: req.session.loggedIn});
     return;
-  }
+  } res.render('/login');
 });
 
 //GET person Form
@@ -114,7 +114,7 @@ router.get('/newUserProfile', withAuth, async (req, res) => {
       attributes: ['id', 'unit_id'],
     });
     const userData = dbData.get({ plain: true });
-    console.log(userData);
+    // console.log(userData);
     res.render('personForm', {userData, loggedIn: req.session.loggedIn })
 
   } catch (err) {
