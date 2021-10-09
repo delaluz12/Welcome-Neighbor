@@ -17,20 +17,20 @@ const newPostFormHandler = async (event) => {
     // console.log(user_id);
     // console.log(typeof user_id);
 
-    // if (title && content && visibility) {
-    //     const response = await fetch('/api/post/', {
-    //         method: 'POST',
-    //         body: JSON.stringify({  title, content, visibility }),
-    //         headers: { 'Content-Type': 'application/json' },
-    //     });
-    //     console.log(response);
+    if (title && content && visibility) {
+        const response = await fetch('/api/post/', {
+            method: 'POST',
+            body: JSON.stringify({  title, content, visibility }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response);
 
-    //     if (response.ok) {
-    //         document.location.replace('/dashboard');
-    //     } else {
-    //         alert('Failed to add post.');
-    //     }
-    // }
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to add post.');
+        }
+    }
 
 
 };

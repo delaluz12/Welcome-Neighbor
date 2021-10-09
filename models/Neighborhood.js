@@ -20,7 +20,7 @@ Neighborhood.init(
       allowNull: false,
     },
     state: {
-      type: DataTypes.STRING(2),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     zip: {
