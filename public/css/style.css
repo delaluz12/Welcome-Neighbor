@@ -67,3 +67,10 @@ h2 {
         visibility: hidden;
     }
  }
+
+
+@media print {
+  .noPrint{
+    display:none;
+  }
+}
