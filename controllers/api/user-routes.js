@@ -34,10 +34,6 @@ router.post('/', async (req, res) => {
     });
 
 
-
-
-
-
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
@@ -52,7 +48,27 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res)=> {
+  try {
 
+    await User.findByPk(req.params.id).then((result) => { 
+      result.update(req.body); 
+  });
+  //     const updateUser = await User.update( {
+  //       password: req.body.password,
+  //       email: req.body.email
+  //       }, {
+  //         where: {id: req.params.id}
+  //     });
+      // if(!updateUser){
+      //     res.status(404).json({message : "No User found with that ID"})
+      // }
+      res.status(200).json({message: "done"});
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+  }
+});
 
 
 
