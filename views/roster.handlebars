@@ -1,0 +1,31 @@
+<h1 style="padding: 25px;">Neighborhood Roster</h1>
+<a style="padding: 25px;" href=""><button type="button" class="btn btn-primary">Download a Roster pdf</button></a>
+
+{{#each units}}
+<h3 style="padding: 25px;">{{unit_number}} {{unit_name}}</h3>
+<table style="padding: 25px;" class="table">
+    <thead>
+        <tr>
+            <th scope="col">Family Member</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Cell</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each people}}
+        <tr>
+            {{!-- <th scope="row"></th> --}}
+            <td>{{type}}</td>
+            <td>{{first_name}}</td>
+            <td>{{last_name}}</td>
+            <td>{{phone}}</td>
+            <td>{{cell}}</td>
+            <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/each}}
