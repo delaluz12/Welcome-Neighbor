@@ -126,7 +126,11 @@ router.get('/roster', withAuth, async (req, res) => {
 //POST new post
 router.get('/newpost', withAuth, (req, res) => {
   try {
-    if()
+    if(!req.session.loggedIn){
+      res.render('/login');
+    }
+    res.render('newPost', {loggedIn: req.session.loggedIn});
+
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
