@@ -2,9 +2,10 @@
   <div class="card mb-2 " >
     <div class="card-body">
       <h6 class="card-title" id="{{id}}">{{title}}</h6>
-      <p class="card-subtitle mb-2 text-muted" style="font-size: .75rem;">Posted on {{format_date created_at}} by
+      <p class="card-subtitle mb-1 text-muted" style="font-size: .75rem;">Posted on {{format_date created_at}} by
         {{user.person.first_name}}</p>
-      <p class="card-subtitle mb-2 text-muted" style="font-size: .65rem;">Neighborhood: {{user.person.unit.neighborhood.name}}</p>
+      <p class="card-subtitle mb-1 text-muted" style="font-size: .65rem;">Neighborhood: {{user.person.unit.neighborhood.name}}</p>
+      <p class="card-subtitle text-muted mb-2" style="font-size: .65rem;">Visibility: {{visibility}} </p>
       <p class="card-text overflow-hidden" style="max-height: 100px;">{{content}}</p>
       <a href="/globalposts/{{id}}" class="card-link">View Post</a>
     </div>
