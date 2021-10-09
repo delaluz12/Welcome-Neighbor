@@ -15,7 +15,8 @@ router.post('/',withAuth, async (req, res) => {
         phone:req.body.phone,
         cell: req.body.cell,
         birth_date: req.body.birthday,
-        unit_id: req.body.unit_id ||  req.session.unit_id     
+        unit_id: req.body.unit_id ||  req.session.unit_id,
+        user_id: req.body.user_id,    
       
     });
 
