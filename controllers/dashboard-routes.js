@@ -10,7 +10,7 @@ router.get('/', withAuth, async (req, res) => {
       where: {
         visibility: 'local',
       },
-      attributes: ['title', 'content', 'post_date_created'],
+      attributes: ['title', 'content', 'created_at'],
       include: [{
         model: User,
         attributes: ['email'],
