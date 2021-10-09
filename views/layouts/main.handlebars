@@ -26,10 +26,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</i></a>
           </li>
+          {{#if loggedIn}}
           <li class="nav-item">
             <a class="nav-link" href="/dashboard"><i class="fas fa-desktop"></i> Dashboard</a>
           </li>
-          {{#if loggedIn}}
           <li class="nav-item">
             <button id="logout" class="nav-link"><i class="far fa-sad-tear"></i> Logout</button>
           </li>
@@ -37,11 +37,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/login"><i class="fas fa-address-card"></i> Login</a>
           </li>
-          {{/if}}
-
           <li class="nav-item">
             <a class="nav-link" href="/browse"><i class="fas fa-user-plus"></i> Sign-Up</a>
           </li>
+          {{/if}}
+
+          
         </ul>
       </div>
 
