@@ -49,13 +49,18 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/household', withAuth, async (req, res) => {
   try {
 
-    const dbHouseholdData = await Unit.findAll({
+    const dbHouseholdData = await User.findAll({
       where: {
-        neighborhood_id: req.session.neighborhood_id
+        id: req.session.user_id
       },
-      attribute: ['id'],
+      attribute: [],
       include: [{
-        model: Person,
+        model: Unit,
+        attribute: ['unit_number', 'unit_name'],
+        include: [{
+          model: Person,
+          attributes: ['first_name', 'last_name', 'type', 'phone', 'cell', 'birth_date'],
+        }],
       }]
     });
     const household = dbHouseholdData.map((household) =>

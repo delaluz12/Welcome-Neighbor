@@ -1,5 +1,35 @@
 <div class="container">
 <div class="row">
+<<<<<<< HEAD
+    <div class="col-sm-8" class="posts2">
+      <h3 class="houseHoldTitle">My Household</h3>
+{{#each household}}
+<h3 style="padding: 50px;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Family Member</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Cell</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each unit.people}}
+        <tr>
+            {{!-- <th scope="row"></th> --}}
+            <td>{{type}}</td>
+            <td>{{first_name}}</td>
+            <td>{{last_name}}</td>
+            <td>{{phone}}</td>
+            <td>{{cell}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/each}}
+=======
     <div class="col-sm-8">
       <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
          
@@ -12,6 +42,7 @@
              </ul>  
           {{/each}}
 
+>>>>>>> bd3e22144e191e377aa841dd64477d206e2f0a73
           
     </div>
 
