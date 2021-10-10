@@ -4,6 +4,7 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth')
 const { User, Unit } = require('../../models');
 const sendEmail = require('../../utils/testSendGrid');
+const neighborTemplate = require('../../utils/neighborEmail');
 
 require('dotenv').config({
   path: require("find-config")('.env')
@@ -18,7 +19,7 @@ router.post('/', async (req, res) => {
     to: req.body.email, // Change to your verified sender
     subject: 'Welcome Neighbor!',
     text: 'We thank you for .....',
-    html: '<h1>Registering!</h1> <br><h2>We thank you for your support!</h2><br><strong> Sincerely, </strong><br><strong> ~Git Down Crew</strong>',
+    html: neighborTemplate,
   }
   try {
 
