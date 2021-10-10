@@ -93,3 +93,20 @@ h2 {
     padding: 0 20% 0 20%;
 }
 
+#creationForms {
+    padding: 50px 350px;
+}
+
+#neighborForm {
+    padding: 50px 350px;
+}
+
+.loginBtns {
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+}
+
+.loginInputs {
+    margin: 20px;
+}
