@@ -3,9 +3,21 @@ const router = require('express').Router();
 const session = require('express-session');
 const { Neighborhood, Unit, User } = require('../../models');
 const withAuth = require('../../utils/auth')
+const sendEmail = require('../../utils/testSendGrid');
+const adminTemplate = require('../../utils/adminEmail');
 
 // CREATE new neighborhood, admin and unit
 router.post('/', async (req, res) => {
+
+  const fromEmail = process.env.SENDGRID_FROM;
+  
+  const registrationEmail = {
+    from: fromEmail, // Change to your recipient
+    to: req.body.email, // Change to your verified sender
+    subject: 'Welcome Neighbor!',
+    text: 'We thank you for .....',
+    html: adminTemplate,
+  }
   try {
 
     const nbhood = await Neighborhood.create({
@@ -54,12 +66,12 @@ router.post('/', async (req, res) => {
       unit_id: newunit.id
     });
 
-    req.session.save(() => {
+    req.session.save(async () => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
       req.session.role = dbUserData.role_id;
       req.session.neighborhood_id = newhood.id;
-      
+      const sendEmailTrigger = await sendEmail(registrationEmail);
 
       res.status(200).json(dbUserData,);
     });
