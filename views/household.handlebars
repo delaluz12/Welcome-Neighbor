@@ -1,5 +1,6 @@
 <div class="container">
 <div class="row">
+<<<<<<< HEAD
     <div class="col-sm-8" class="posts2">
       <h3 class="houseHoldTitle">My Household</h3>
 {{#each household}}
@@ -28,11 +29,25 @@
     </tbody>
 </table>
 {{/each}}
+=======
+    <div class="col-sm-8">
+      <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
+         
+          {{#each Household}}
+            
+            <ul id="householdMembers">
+               {{#with people}}
+                <li>{{first_name}} {{last_name}}</li>
+                {{/with}}
+             </ul>  
+          {{/each}}
+
+>>>>>>> bd3e22144e191e377aa841dd64477d206e2f0a73
           
     </div>
 
     <div class="col-sm-4" class="posts2">
-        <form class="updateInfo">
+        <form class="updateInfoForm">
             <div class="form-group formContainer">
                 <div class="personals">
                     <h6>Update your personal information</h6>
@@ -44,7 +59,7 @@
             </div>
            
         </form>
-        <form action="">
+        <form class="addIndForm">
             <div class="form-group formContainer">
 
                 <div class="adding">

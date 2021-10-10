@@ -1,10 +1,11 @@
-<h1 style="padding: 25px;">Neighborhood Roster</h1>
-<a style="padding: 25px;" href=""><button onclick="window.print()" type="button" class="btn btn-primary noPrint">Print Roster</button></a>
+<h1 style="padding: 25px; text-align: center; font-size: 80px; color:#175c4a">Neighborhood Roster</h1>
+<a style="padding: 25px;" href=""><button onclick="window.print()" type="button" class="btn btn-primary noPrint" id="printRoster">Print Roster</button></a>
 
 {{#each units}}
-<h3 style="padding: 50px;" class=" unitsNames">{{unit_number}} {{unit_name}}</h3>
-<table style="padding: 25px;" class="table">
-    <thead>
+<h3 style="padding: 25px; position:relative; left: 250px" id="unitsNames">{{unit_number}} {{unit_name}}</h3>
+<div id="move">
+<table style="padding: 25px; border: 1px" class="table" >
+    <thead class="thead"> 
         <tr>
             <th scope="col">Family Member</th>
             <th scope="col">First</th>
@@ -28,6 +29,7 @@
         {{/each}}
     </tbody>
 </table>
+</div>
 {{/each}}
 
 <a href="/dashboard" class="d-flex justify-content-center text-decoration-none my-2"><button
