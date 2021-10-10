@@ -53,12 +53,13 @@ h2 {
 }
 #logo {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     padding: 0;
-    margin-left: 77px;
     margin-bottom: 10px;
-    transform: rotate(40deg);
+}
+#linkList {
+    margin-left: 200px;
 }
 
 .social {
@@ -74,7 +75,6 @@ h2 {
     align-items: center;
     flex-direction: column;
 }
-
 @media (min-width: 1401px) { 
     .myclass {
         visibility: hidden;
