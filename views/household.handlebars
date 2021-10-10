@@ -2,17 +2,32 @@
 <div class="row">
     <div class="col-sm-8" class="posts2">
       <h3 class="houseHoldTitle">My Household</h3>
-          {{members.last_name}}
-          {{#each household as |members|}}
-            {{!- #if}}
-            <div id="householdMembers">
-               
-                <ul>
-                    <li>{{members.unit_id}}</li>
-                </ul>
-             </div>  
-          {{/each}}
-
+{{#each household}}
+<h3 style="padding: 50px;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Family Member</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Cell</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each unit.people}}
+        <tr>
+            {{!-- <th scope="row"></th> --}}
+            <td>{{type}}</td>
+            <td>{{first_name}}</td>
+            <td>{{last_name}}</td>
+            <td>{{phone}}</td>
+            <td>{{cell}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/each}}
           
     </div>
 
