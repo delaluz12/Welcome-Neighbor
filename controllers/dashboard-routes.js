@@ -57,7 +57,7 @@ router.get('/household', withAuth, async (req, res) => {
     const household = dbHouseholdData.map((household) =>
       household.get({ plain: true })
     );
-    res.render('dashboard', {
+    res.render('household', {
       household,
       loggedIn: req.session.loggedIn,
     });
