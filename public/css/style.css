@@ -1,3 +1,7 @@
+body {
+    background-color: #175c4a;
+}
+
 header, footer {
     background-color: gray;
     margin: 20;
@@ -11,11 +15,14 @@ header, footer {
 figure {
     background: url('../css/assets/images/neighbors1.jpg') center center fixed;
     height: 250px;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #175c4a;
+    background-blend-mode: luminosity;
 }
 main {
-    background-color: rgb(238, 237, 237);
+    background-color: #f3f1ea;
     margin: 25px;
-    box-shadow: 5px 5px 20px rgb(214, 213, 213);
 }
 .nav-link:hover {
     color: white;
@@ -42,6 +49,7 @@ h2 {
 }
 #logout:hover {
     background-color: darkgray;
+  
 }
 #logo {
     position: absolute;
@@ -50,7 +58,12 @@ h2 {
     padding: 0;
     margin-left: 77px;
     margin-bottom: 10px;
-    transform: rotate(40deg)
+    transform: rotate(40deg);
+}
+
+.social {
+    color: #175c4a;
+   
 }
 .social:hover {
     transform: scale(120%);
@@ -74,3 +87,9 @@ h2 {
     display:none;
   }
 }
+
+#newPost {
+    margin: 0 100px 50px 100px;
+    padding: 0 20% 0 20%;
+}
+

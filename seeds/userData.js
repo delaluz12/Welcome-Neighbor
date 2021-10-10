@@ -29,7 +29,7 @@ const userdata = [
     unit_id: 3,
   },
   {
-    email: 'user2@test.com',
+    email: 'git',
     password: user2,
     role_id: 2,
     unit_id: 4,

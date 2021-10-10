@@ -38,7 +38,7 @@ router.get('/household', withAuth, async (req, res) => {
     const household = dbHouseholdData.map((household) =>
       household.get({ plain: true })
     );
-    res.render('dashboard', {
+    res.render('household', {
       household,
       loggedIn: req.session.loggedIn,
     });
@@ -61,9 +61,9 @@ router.get('/neighbors', withAuth, async (req, res) => {
     const neighbors = dbNeighborData.map((neighbors) =>
       neighbors.get({ plain: true })
     );
-    res.render('dashboard', {
+    res.render('roster', {
       neighbors,
-      loggedIn: req.session.loggedIn, style: 'dashboard'
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -117,6 +117,7 @@ router.get('/newpost', withAuth, (req, res) => {
     res.status(400).json(err);
   }
 })
+
 
 
 module.exports = router;
