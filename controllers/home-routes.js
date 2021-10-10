@@ -1,9 +1,12 @@
 const router = require('express').Router();
 const { Post, User, Person, Neighborhood, Unit } = require('../models');
-const withAuth = require('../utils/auth')
+const withAuth = require('../utils/auth');
+// const sendEmail = require('../utils/testSendGrid');
+
 // GET all global posts for homepage
 router.get('/', async (req, res) => {
   try {
+    // sendEmail({});
     const dbPostData = await Post.findAll({
       where: {
         visibility: 'global',

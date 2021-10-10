@@ -3,9 +3,23 @@ const router = require('express').Router();
 
 const withAuth = require('../../utils/auth')
 const { User, Unit } = require('../../models');
+const sendEmail = require('../../utils/testSendGrid');
 
+require('dotenv').config({
+  path: require("find-config")('.env')
+});
 // CREATE new user and unit
 router.post('/', async (req, res) => {
+
+  const fromEmail = process.env.SENDGRID_FROM;
+  
+  const registrationEmail = {
+    from: fromEmail, // Change to your recipient
+    to: req.body.email, // Change to your verified sender
+    subject: 'Welcome Neighbor!',
+    text: 'We thank you for .....',
+    html: '<h1>Registering!</h1> <br><h2>We thank you for your support!</h2><br><strong> Sincerely, </strong><br><strong> ~Git Down Crew</strong>',
+  }
   try {
 
     const dbUnit = await Unit.create({
@@ -34,11 +48,12 @@ router.post('/', async (req, res) => {
     });
 
 
-    req.session.save(() => {
+    req.session.save(async () => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id;
-      req.session.unit_id = dbUserData.unit_id
-      req.session.neighborhood_id = req.body.neighborhood_id,
+      req.session.unit_id = dbUserData.unit_id;
+      req.session.neighborhood_id = req.body.neighborhood_id;
+        const sendEmailTrigger = await sendEmail(registrationEmail);
 
         res.status(200).json(dbUserData);
     });
