@@ -2,7 +2,7 @@
 <a style="padding: 25px;" href=""><button onclick="window.print()" type="button" class="btn btn-primary noPrint">Print Roster</button></a>
 
 {{#each units}}
-<h3 style="padding: 25px;">{{unit_number}} {{unit_name}}</h3>
+<h3 style="padding: 50px;" class=" unitsNames">{{unit_number}} {{unit_name}}</h3>
 <table style="padding: 25px;" class="table">
     <thead>
         <tr>
@@ -29,3 +29,6 @@
     </tbody>
 </table>
 {{/each}}
+
+<a href="/dashboard" class="d-flex justify-content-center text-decoration-none my-2"><button
+                            type="button" class="btn btn-primary back"> Back to Dashboard</button></a>

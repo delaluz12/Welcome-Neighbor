@@ -1,60 +1,24 @@
 /* custom properties*/
 :root {
-    --bgc-TEST:rgb(241, 80, 80);
     --bg-repeat: no-repeat;
     --bg-attch: fixed;
     --bg-p-x: center;
     }
 
-body {
-    background-color:var(--bgc-TEST);
-}
-
 img {
     width: 100%;
 }
-.profilePic {
-    display: flex ;
-    background-image:url(placeholder.png) ;
-    background-repeat: var(--bg-repeat);
-    background-size: 200px 100px;
-    background-position-x: var(--bg-p-x);
-    border-radius: 50px;
-}
 
+.profilePic{
+  margin-top: 50px ;
+}
 
 /*Pop-up styling*/
 
 * {
     box-sizing: border-box;
   }
-  .openBtn {
-    display: flex;
-    justify-content: left;
-  }
-  .openButton {
-    border: none;
-    border-radius: 5px;
-    background-color: #1c87c9;
-    color: white;
-    padding: 14px 20px;
-    cursor: pointer;
-    position: fixed;
-  }
-  .loginPopup {
-    position: relative;
-    text-align: center;
-    width: 100%;
-  }
-  .formPopup {
-    display: none;
-    position: fixed;
-    left: 45%;
-    top: 5%;
-    transform: translate(-50%, 5%);
-    border: 3px solid #999999;
-    z-index: 9;
-  }
+ 
   .formContainer {
     max-width: 300px;
     padding: 20px;
@@ -83,30 +47,101 @@ img {
     margin-bottom: 15px;
     opacity: 0.8;
   }
-  .formContainer .cancel {
-    background-color: #cc0000;
-    color: rgb(255, 255, 255);
-
-  }
   .formContainer .btn:hover,
   .openButton:hover {
     opacity: 3;
   }
 
+  /*posts*/
 
+.posts2 {
+  margin: 50px 400px 20px 100px;
+  background-color: #f9cbbe;
+  padding: 2% 5%;
+  
+} 
+#smallTitle {
+color: #000000;
+}
+
+.postTitle {
+    margin-left:100px;
+    margin-top: 50px;
+}
+
+#bar {
+    background-color: rgb(230, 127, 17);
+}
 /* Scrollbar styling*/
 body::-webkit-scrollbar {
     width: 15px; /* width of the entire scrollbar */
   }
   
 body::-webkit-scrollbar-track {
-    background: #d88201;/* color of the tracking area */
+    background: #ffffff;/* color of the tracking area */
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /*shadow*/
   }
   
 body::-webkit-scrollbar-thumb {
-    background-color: whitesmoke;/* color of the scroll thumb */
+    background-color: rgb(230, 127, 17);/* color of the scroll thumb */
     border-radius: 30px;/* roundness of the scroll thumb */
     border: 1px solid ;/* creates padding around scroll thumb */
     border-color:#cc0000 ;
+  }
+
+
+  h6 {
+    text-align: center;
+  }
+
+  .btn {
+    background-color: #175c4a;
+    color: rgb(250, 246, 241);
+  }
+  .btn:hover {
+    background-color: #d88201;
+  }
+
+  .back {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .houseHoldTitle {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .singlePost {
+    margin: 30px 200px;
+    padding: 0 8%;
+  }
+
+  .availableNs {
+    margin: 0 80px;
+  }
+
+  .link-d {
+    text-decoration: none;
+    color: #175c4a;
+  }
+
+  .link-d:hover {
+    color: #d88201;
+    
+  }
+
+  .table {
+    margin: 0 80px 10px 80px;
+    padding: 50px
+  }
+
+  .unitNames {
+
+    margin: 5px 50px
+
+  }
+
+  .card-body {
+    background-color: #fce3dc ;
   }

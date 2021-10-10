@@ -1,23 +1,34 @@
+
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-        1
+        
         <div class="profilePic">
-            <img src="/images/placeholder.png">
+            <img src="/images/placeholderr.png">
         </div>
         <div class="profileInfo">
-            <h3>{{person.first_name}}</h3>
+            <h3>{{household.user.person.first_name}}</h3>
         </div>
-        {{> pop-up}}
+
+          <a href="dashboard/newPost" class="d-flex justify-content-center text-decoration-none my-2">
+            <buttontype="button" class="btn btn-primary">Create New Post</button>
+          </a>
+
+          <a href="dashboard/roster" class="d-flex justify-content-center text-decoration-none my-2">
+            <button type="button" class="btn btn-primary"> View My Neighbors</button>
+          </a>
+
+          <a href="dashboard/household" class="d-flex justify-content-center text-decoration-none my-2">
+            <button type="button" class="btn btn-primary"> View My Profile</button>
+          </a>
+  
     </div>
+
     <div class="col-sm-9">
-      <div class="row">
-        <div class="col-6 col-sm-6">
-            2
+      <h3 class="postTitle">CURRENT POSTS</h3>
           {{#each posts as |post|}}
-            {{!- #if}}
-            <div class="posts">
-                <h5>{{post.title}}</h5>
+            <div class="posts2">
+                <h5 id="smallTitle">{{post.title}}</h5>
                 <p>
                     {{post.content}}
                     <br><br>
@@ -25,17 +36,8 @@
                 </p>
              </div>  
           {{/each}}
-        </div>
-        <div class="col-6 col-sm-6">
-            3
-         {{#each neighbors as |neighbor|}}
-            <div class="neighbors">
-                <p class="household">{{neighbor.first_name}}</p><p>{{neighbor.last_name}}</p>
 
-            </div>
-        {{/each}}
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

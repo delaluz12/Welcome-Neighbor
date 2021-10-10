@@ -1,0 +1,64 @@
+<div class="container">
+<div class="row">
+    <div class="col-sm-8" class="posts2">
+      <h3 class="houseHoldTitle">My Household</h3>
+          {{members.last_name}}
+          {{#each household as |members|}}
+            {{!- #if}}
+            <div id="householdMembers">
+               
+                <ul>
+                    <li>{{members.unit_id}}</li>
+                </ul>
+             </div>  
+          {{/each}}
+
+          
+    </div>
+
+    <div class="col-sm-4" class="posts2">
+        <form class="updateInfo">
+            <div class="form-group formContainer">
+                <div class="personals">
+                    <h6>Update your personal information</h6>
+                        <input type="text" id="email" placeholder="Your Email">
+                         <input type="password" id="psw" placeholder="Your Password">
+
+                </div>
+                 <button type="submit" class="btn" id="updateInfo" value="submit">Submit</button>
+            </div>
+           
+        </form>
+        <form action="">
+            <div class="form-group formContainer">
+
+                <div class="adding">
+                    <h6 >Add a new individual to unit</h6>
+
+                        <input type="text" id="newIndF" placeholder="First Name" >
+                        <input type="text" id="newIndL" placeholder="Last Name">
+                            <select class="form-select" id="person_type">
+                                <option selected value="null">I am a </option>
+                                <option value="adult" id="adult">Adult</option>
+                                <option value="child" id="pet">Child</option>
+                                <option value="pet" id="pet">Pet</option>
+                            </select>
+                        <input type="tel" class="form-control" placeholder="Telephone Number" id="phone">
+                        <input type="tel" class="form-control"  placeholder="cellphone Number" id="cell">
+                        <input type="date"class="form-control"  placeholder="Birth Date" id="birthday" name="birthday">
+                        <input type="text" id="indUnit" placeholder="Unit id"> 
+                        <input type="text" id="indId" placeholder="User id">
+                </div>
+
+                <button type="submit" class="btn" id="addPrsn" value="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+ <a href="/dashboard" class="d-flex justify-content-center text-decoration-none my-2">
+    <button type="button" class="btn btn-primary back"> Back to Dashboard</button>
+ </a>
+
+ <script src="/js/addIndividual.js" ></script>
+        
