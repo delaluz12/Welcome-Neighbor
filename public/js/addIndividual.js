@@ -18,7 +18,7 @@ async function addInd(event) {
         phone,
         cell,
         birth_date,
-        unit_id,
+        unit_id
       }),
       headers: {
         'Content-Type': 'application/json',
