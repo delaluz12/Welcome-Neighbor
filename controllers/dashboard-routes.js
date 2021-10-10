@@ -6,12 +6,31 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-// GET Post data for the dashboard
+// GET local Posts for the dashboard
 router.get('/', withAuth, async (req, res) => {
   try {
-    const posts = await sequelize.query("SELECT title, content, post.created_at, email, first_name, last_name FROM neighborhood_db.post join neighborhood_db.user on post_user_id=user.id join neighborhood_db.unit on unit_id=unit.id join person on person.user_id = user.id where neighborhood_id=? and visibility = 'local'", { replacements: [req.session.neighborhood_id], type: QueryTypes.SELECT });
-    // console.log(posts);
-  
+    const posts = await Post.findAll({
+      where: {
+        visibility: 'local',
+      },
+      attributes: ['title', 'content', 'createdAt'],
+      include: [{
+        model: User,
+        right: true,
+        attributes: ['email'],
+        include: [{
+          model: Unit,
+          right: true,
+          attributes: [],
+          where: {
+            neighborhood_id: req.session.neighborhood_id
+          },
+        },{
+          model: Person,
+          attributes: ['first_name', 'last_name'],
+        }],
+      }]
+    });
     res.render('dashboard', {
       posts,
       loggedIn: req.session.loggedIn,
