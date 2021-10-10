@@ -28,7 +28,7 @@ img {
   .formContainer input[type=password] {
     width: 100%;
     padding: 15px;
-    margin: 5px 0 20px 0;
+    margin: 6px 0 21px 0;
     border: none;
     background: #eee;
   }
@@ -133,15 +133,40 @@ body::-webkit-scrollbar-thumb {
 
   .table {
     margin: 0 80px 10px 80px;
-    padding: 50px
+    width: 60%;
+    
   }
 
-  .unitNames {
+  .unitNames.h3 {
+    position: relative;
+    left: 200px;
 
-    margin: 5px 50px
+    margin: 5px 
 
   }
 
   .card-body {
     background-color: #fce3dc ;
+  }
+
+  .welcomeMssg {
+    text-align: center;
+    margin: 30px 0 30px 0;
+  }
+
+  .thead {
+    background-color: #f9cbbe;
+    padding-right: 30px ;
+  }
+
+  #move {
+    position: relative;
+    justify-content: center;
+    left: 200px;
+  }
+
+  #printRoster {
+    justify-content: center;
+    position: relative;
+    left: 650px;
   }
