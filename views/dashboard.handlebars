@@ -25,19 +25,16 @@
     </div>
 
     <div class="col-sm-9">
-      <h3 class="postTitle">CURRENT POSTS</h3>
+      <h3 class="postTitle">MY NEIGHBORHOOD - CURRENT POSTS</h3>
           {{#each posts as |post|}}
             <div class="posts2">
                 <h5 id="smallTitle">{{post.title}}</h5>
-                <p>
-                    {{post.content}}
-                    <br><br>
-                    {{format_date post.created_at}}
-                </p>
+                <p>{{post.content}}</p>
+                <p>Post Date: {{format_date post.createdAt}}</p>    
+                <p>Posted by: {{user.person.first_name}} {{user.person.last_name}}</p>
+                <p>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></p>
              </div>  
           {{/each}}
-
-
     </div>
   </div>
 </div>

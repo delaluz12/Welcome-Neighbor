@@ -9,7 +9,7 @@ const sequelize = require('../config/connection');
 // GET local Posts for the dashboard
 router.get('/', withAuth, async (req, res) => {
   try {
-    const posts = await Post.findAll({
+    const dbPostData = await Post.findAll({
       where: {
         visibility: 'local',
       },
@@ -31,6 +31,10 @@ router.get('/', withAuth, async (req, res) => {
         }],
       }]
     });
+    const posts = dbPostData.map((posts) =>
+    posts.get({ plain: true })
+  );
+    console.log(posts);
     res.render('dashboard', {
       posts,
       loggedIn: req.session.loggedIn,
