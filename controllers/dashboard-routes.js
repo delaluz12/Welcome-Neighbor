@@ -13,6 +13,7 @@ router.get('/', withAuth, async (req, res) => {
       where: {
         visibility: 'local',
       },
+      order: [['id', 'DESC']],
       attributes: ['title', 'content', 'createdAt'],
       include: [{
         model: User,
