@@ -3,13 +3,13 @@ async function addInd(event) {
 
     const first_name = document.querySelector('#newIndF').value;
     const last_name = document.querySelector('#newIndL').value;
-    const type = document.querySelector('#type').value;
+    const type = document.querySelector('#person_type').value;
     const phone = document.querySelector('#phone').value;
     const cell = document.querySelector('#cell').value;
-    const birth_date = document.querySelector('#bd').value;
-    const unit_id = document.querySelector('#unit').value;
+    const birth_date = document.querySelector('#birthday').value;
+    
 
-    const response = await fetch(`/api/person/`, {
+    const response = await fetch(`/api/person`, {
       method: 'POST',
       body: JSON.stringify({
         first_name,
@@ -18,7 +18,7 @@ async function addInd(event) {
         phone,
         cell,
         birth_date,
-        unit_id
+      
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -26,6 +26,7 @@ async function addInd(event) {
     });
     
     if (response.ok) {
+      alert('New individual successfully added')
       document.location.replace('/');
     } else {
       alert('Failed to add new individual');

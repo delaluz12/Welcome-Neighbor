@@ -1,12 +1,11 @@
 <div class="container">
 <div class="row">
-<<<<<<< HEAD
-    <div class="col-sm-8" class="posts2">
-      <h3 class="houseHoldTitle">My Household</h3>
-{{#each household}}
-<h3 style="padding: 50px;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
-<table class="table">
-    <thead>
+    <div class="col-sm-8">
+       <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
+        {{#each household}}
+        <h3 style="padding: 50px 25px 10px 0;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
+        <table class="table">
+        <thead class="thead">
         <tr>
             <th scope="col">Family Member</th>
             <th scope="col">First</th>
@@ -14,8 +13,8 @@
             <th scope="col">Phone</th>
             <th scope="col">Cell</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         {{#each unit.people}}
         <tr>
             {{!-- <th scope="row"></th> --}}
@@ -26,24 +25,9 @@
             <td>{{cell}}</td>
         </tr>
         {{/each}}
-    </tbody>
-</table>
-{{/each}}
-=======
-    <div class="col-sm-8">
-      <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
-         
-          {{#each Household}}
-            
-            <ul id="householdMembers">
-               {{#with people}}
-                <li>{{first_name}} {{last_name}}</li>
-                {{/with}}
-             </ul>  
-          {{/each}}
-
->>>>>>> bd3e22144e191e377aa841dd64477d206e2f0a73
-          
+        </tbody>
+        </table>
+    {{/each}}
     </div>
 
     <div class="col-sm-4" class="posts2">
@@ -76,8 +60,8 @@
                         <input type="tel" class="form-control" placeholder="Telephone Number" id="phone">
                         <input type="tel" class="form-control"  placeholder="cellphone Number" id="cell">
                         <input type="date"class="form-control"  placeholder="Birth Date" id="birthday" name="birthday">
-                        <input type="text" id="indUnit" placeholder="Unit id"> 
-                        <input type="text" id="indId" placeholder="User id">
+                        {{!-- <input type="text" id="indUnit" placeholder="Unit id"> 
+                        <input type="text" id="indId" placeholder="User id"> --}}
                 </div>
 
                 <button type="submit" class="btn" id="addPrsn" value="submit">Add</button>
