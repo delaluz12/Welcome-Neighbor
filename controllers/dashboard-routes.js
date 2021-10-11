@@ -6,7 +6,7 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-// GET local Posts for the dashboard
+// GET local Posts for the dashboard && user first name
 router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -34,9 +34,18 @@ router.get('/', withAuth, async (req, res) => {
     const posts = dbPostData.map((posts) =>
     posts.get({ plain: true })
   );
-    console.log(posts);
+  const dbUser = await User.findByPk(req.session.user_id, {
+    include: [{
+      model: Person,
+      where: {user_id: req.session.user_id},
+      attributes: ['first_name'],
+    }]
+  });
+  const userData = dbUser.get({plain:true});
+    console.log(userData);
     res.render('dashboard', {
       posts,
+      userData,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
