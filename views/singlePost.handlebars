@@ -4,7 +4,7 @@
             <div class="card mb-2 ">
                 <div class="card-body">
                     <h4 class="card-title" id="{{post.id}}">{{post.title}}</h4>
-                    <p class="card-subtitle mb-2 text-muted">Posted on {{format_date post.post_date_created}} by
+                    <p class="card-subtitle mb-2 text-muted">Posted on {{format_date post.created_at}} by
                         {{post.user.person.first_name}}</p>
                     <p class="card-subtitle mb-2 text-muted">Neighborhood:
                         {{post.user.person.unit.neighborhood.name}}</p>
