@@ -135,6 +135,7 @@ router.get('/roster', withAuth, async (req, res) => {
     );
     res.render('roster', {
       units,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
