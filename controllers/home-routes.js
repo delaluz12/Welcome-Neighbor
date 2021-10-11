@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
       where: {
         visibility: 'global',
       },
+      order: [['id', 'DESC']],
       attributes: ['id', 'title', 'content', 'created_at','visibility'],
 
       include: [{
@@ -44,12 +45,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // GET homepage - landing page with Join or Create
 router.get('/browse', async (req, res) => {
 
   try {
     //get neighborhoods to display in viewable list
-    const dbNeighborhoods = await Neighborhood.findAll();
+    const dbNeighborhoods = await Neighborhood.findAll({order: [['name', 'ASC']]});
     const neighborhoods = dbNeighborhoods.map((neighborhood) =>
       neighborhood.get({ plain: true })
     );
@@ -59,6 +61,53 @@ router.get('/browse', async (req, res) => {
     res.status(400).json(err);
   }
 
+});
+
+// GET all global posts specific Neighborhood 
+router.get('/browse/:id', async (req, res) => {
+  try {
+    // sendEmail({});
+    const dbPostData = await Post.findAll({
+      
+      attributes: ['id', 'title', 'content', 'created_at','visibility'],
+
+      include: [{
+        model: User,
+        right: true,
+        include: [{
+          model: Person,
+          attributes: ['first_name', 'last_name'],
+          include: [{
+            model: Unit,
+            right: true,
+            include: [{
+              model: Neighborhood,
+              where: {id: req.params.id},
+              right: true
+              
+              
+            }]
+          }]
+        }]
+      }],
+      where: {
+        visibility: 'global'        
+      },
+      order: [['id', 'DESC']]
+  
+    });
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
+    // console.log(posts);
+    res.render('neighborhoodposts', {
+      loggedIn: req.session.loggedIn,
+      posts
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
 });
 
 // GET login page

@@ -55,7 +55,7 @@ img {
   /*posts*/
 
 .posts2 {
-  margin: 50px 400px 20px 100px;
+  margin: 50px 250px 20px 100px;
   background-color: #f9cbbe;
   padding: 2% 5%;
   
@@ -131,7 +131,7 @@ body::-webkit-scrollbar-thumb {
     
   }
 
-  .table {
+  .tableRoster {
     margin: 0 80px 10px 80px;
     width: 60%;
     
