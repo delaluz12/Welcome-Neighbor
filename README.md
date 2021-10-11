@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Hello-Neighbor 👋</h1>
+<h1 align="center">Welcome-Neighbor 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/delaluz12/Welcome-Neighbor#readme" target="_blank">
@@ -19,7 +19,7 @@
 
 ### 🏠 [Homepage](https://github.com/delaluz12/Welcome-Neighbor)
 
-### ✨ [Demo](https://hello-neighbor.herokuapp.com/)1
+### ✨ [Live App](https://hello-neighbor.herokuapp.com/)
 <br>
 
 ## Authors A.K.A The Git Down Crew
