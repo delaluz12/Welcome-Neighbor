@@ -32,7 +32,7 @@
                 <p>{{post.content}}</p>
                 <p>Post Date: {{format_date post.createdAt}}</p>    
                 <p>Posted by: {{user.person.first_name}} {{user.person.last_name}}</p>
-                <p>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></p>
+                <p>Email: <a href="mailto:{{user.email}}" class="link-d">{{user.email}}</a></p>
              </div>  
           {{/each}}
     </div>
