@@ -1,78 +1,74 @@
 <div class="container">
-<div class="row">
-    <div class="col-sm-8">
-       <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
-        {{#each household}}
-        <h3 style="padding: 50px 25px 10px 0;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
-        <table class="table">
-        <thead class="thead">
-        <tr>
-            <th scope="col">Family Member</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Cell</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each unit.people}}
-        <tr>
-            {{!-- <th scope="row"></th> --}}
-            <td>{{type}}</td>
-            <td>{{first_name}}</td>
-            <td>{{last_name}}</td>
-            <td>{{phone}}</td>
-            <td>{{cell}}</td>
-        </tr>
-        {{/each}}
-        </tbody>
-        </table>
-    {{/each}}
-    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3 class="houseHoldTitle" style="color: #175c4a; font-size: 80px">My Household</h3>
+            {{#each household}}
+            <h3 style="padding: 50px 25px 10px 0;" class=" unitsNames">{{unit.unit_number}} {{unit.unit_name}}</h3>
+            <table class="table">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">Family Member</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Cell</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each unit.people}}
+                    <tr>
+                        {{!-- <th scope="row"></th> --}}
+                        <td>{{type}}</td>
+                        <td>{{first_name}}</td>
+                        <td>{{last_name}}</td>
+                        <td>{{phone}}</td>
+                        <td>{{cell}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{/each}}
+        </div>
 
-    <div class="col-sm-4" class="posts2">
-        <form class="updateInfoForm">
-            <div class="form-group formContainer">
-                <div class="personals">
-                    <h6>Update your personal information</h6>
+        <div class="col-sm-4" class="posts2">
+            <form class="updateInfoForm">
+                <div class="form-group formContainer">
+                    <div class="personals">
+                        <h6>Update your personal information</h6>
                         <input type="text" id="email" placeholder="Your Email">
-                         <input type="password" id="psw" placeholder="Your Password">
+                        <input type="password" id="psw" placeholder="Your Password">
 
+                    </div>
+                    <button type="submit" class="btn" id="updateInfo" value="submit">Submit</button>
                 </div>
-                 <button type="submit" class="btn" id="updateInfo" value="submit">Submit</button>
-            </div>
-           
-        </form>
-        <form class="addIndForm">
-            <div class="form-group formContainer">
 
-                <div class="adding">
-                    <h6 >Add a new individual to unit</h6>
+            </form>
+            <form id="addIndForm" class="form-group formContainer addIndForm">
 
-                        <input type="text" id="newIndF" placeholder="First Name" >
-                        <input type="text" id="newIndL" placeholder="Last Name">
-                            <select class="form-select" id="person_type">
-                                <option selected value="null">I am a </option>
-                                <option value="adult" id="adult">Adult</option>
-                                <option value="child" id="pet">Child</option>
-                                <option value="pet" id="pet">Pet</option>
-                            </select>
-                        <input type="tel" class="form-control" placeholder="Telephone Number" id="phone">
-                        <input type="tel" class="form-control"  placeholder="cellphone Number" id="cell">
-                        <input type="date"class="form-control"  placeholder="Birth Date" id="birthday" name="birthday">
-                        {{!-- <input type="text" id="indUnit" placeholder="Unit id"> 
-                        <input type="text" id="indId" placeholder="User id"> --}}
-                </div>
+                <h6>Add a new individual to unit</h6>
+                <select class="form-select" id="person_type">
+                    <option selected>Select Person Type</option>
+                    <option value="adult" id="adult">Adult</option>
+                    <option value="child" id="child">Child</option>
+                    <option value="pet" id="pet">Pet</option>
+                </select>
+                <input type="text" id="newIndF" placeholder="First Name (required)">
+                <input type="text" id="newIndL" placeholder="Last Name (optional)">
+
+                <input type="text" class="" placeholder="Telephone Number (optional)" id="phone">
+                <input type="text" class="" placeholder="Cellphone Number (optional)" id="cell">
+                <label for="birthday" class="form-label">Birthdate (Optional)</label>
+                <input type="date" class="form-control" placeholder="Birth Date" id="birthday" name="birthday">
+
 
                 <button type="submit" class="btn" id="addPrsn" value="submit">Add</button>
-            </div>
-        </form>
+
+            </form>
+        </div>
     </div>
 </div>
-</div>
- <a href="/dashboard" class="d-flex justify-content-center text-decoration-none my-2">
+<a href="/dashboard" class="d-flex justify-content-center text-decoration-none my-2">
     <button type="button" class="btn btn-primary back"> Back to Dashboard</button>
- </a>
+</a>
 
- <script src="/js/addIndividual.js" ></script>
-        
+<script src="/js/addIndividual.js"></script>
