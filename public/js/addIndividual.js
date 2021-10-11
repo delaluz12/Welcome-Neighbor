@@ -2,11 +2,11 @@ const newPersonFromDashboard = async (event) => {
   event.preventDefault();
   const first_name = document.querySelector('#newIndF').value;
   const last_name = document.querySelector('#newIndL').value;
-  const type = document.querySelector('#type').value;
+  const e = document.getElementById('person_type');
+  const person_type = e.options[e.selectedIndex].value;
   const phone = document.querySelector('#phone').value;
   const cell = document.querySelector('#cell').value;
-  const birth_date = document.querySelector('#bd').value;
-  const unit_id = req.session.unit_id;
+  const birth_date = document.querySelector('#birthday').value;
 
 
   // const e = document.getElementById('person_type');
@@ -26,10 +26,10 @@ const newPersonFromDashboard = async (event) => {
   // console.log(typeof unit_id);
   // console.log(typeof user_id);
 
-  if (first_name && last_name && type && phone && cell && birth_date && unit_id) {
-      const response = await fetch('/api/person/', {
+  if (first_name && last_name && person_type && phone && cell && birth_date) {
+      const response = await fetch('/api/person/new', {
           method: 'POST',
-          body: JSON.stringify({ first_name, last_name, person_type, phone, cell, birthday, unit_id }),
+          body: JSON.stringify({ first_name, last_name, person_type, phone, cell, birth_date, unit_id }),
           headers: { 'Content-Type': 'application/json' },
       });
       console.log(response);
