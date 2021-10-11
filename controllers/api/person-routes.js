@@ -20,8 +20,30 @@ router.post('/',withAuth, async (req, res) => {
       
     });
 
-    
+req.session.save(() => {
+  req.session.loggedIn = true;
   
+  res.status(200).json(persondb);
+});
+  } catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
+});
+
+router.post('/new',withAuth, async (req, res) => {
+  console.log('we hit the route');
+  try {
+    const persondb = await Person.create({
+        first_name: req.body.first_name ,
+        last_name: req.body.last_name,
+        type: req.body.person_type,
+        phone:req.body.phone,
+        cell: req.body.cell,
+        birth_date: req.body.birthday,
+        unit_id: req.session.unit_id,
+    });
+
 req.session.save(() => {
   req.session.loggedIn = true;
   
