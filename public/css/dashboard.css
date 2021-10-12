@@ -137,12 +137,16 @@ body::-webkit-scrollbar-thumb {
     
   }
 
-  .unitNames.h3 {
-    position: relative;
-    left: 200px;
+  .table {
+    padding: 25px;
+     border: 1px
+  }
 
-    margin: 5px 
-
+  h3.unitNames {
+    margin:20px;
+    padding: 25px;
+    position:relative; 
+    left: 250px;
   }
 
   .card-body {
@@ -170,3 +174,73 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     left: 650px;
   }
+
+  .titleRoster {
+    padding: 25px; 
+    text-align: center;
+     font-size: 80px; 
+     color:#175c4a
+  }
+
+  .houseHoldTitle{
+    color: #175c4a; 
+    font-size: 80px
+  }
+
+  @media only screen and (max-width: 450px) {
+    .posts2 {
+        margin: 10px 0 5px 0;
+    }
+
+    .postTitle{
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    h1.titleRoster{
+      font-size: 45px ;
+
+    }
+
+    h3.unitNames{
+      margin: 0 0 0 -200px;
+    }
+
+    #move{
+      margin: 0 0 0 -280px;
+    }
+
+    .tableRoster{
+      width: min-content;
+    }
+
+
+    #addIndForm {
+      position: relative;
+      left: 20px;
+    }
+
+    .updateInfoForm {
+      position: relative;
+      left: 20px;
+    }
+
+    .houseHoldTitle{
+      font-size: 45px ;
+    }
+    .hosueholdTable{
+
+
+    }
+  
+    td{
+      font-size: small;
+      
+    }
+
+    tbody{
+      font-size: small;
+      margin: -20px;
+    }
+
+}

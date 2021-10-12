@@ -1,10 +1,10 @@
-<h1 style="padding: 25px; text-align: center; font-size: 80px; color:#175c4a">Neighborhood Roster</h1>
+<h1 class="titleRoster">Neighborhood Roster</h1>
 <a style="padding: 25px;" href=""><button onclick="window.print()" type="button" class="btn btn-primary noPrint" id="printRoster">Print Roster</button></a>
 
 {{#each units}}
-<h3 style="padding: 25px; position:relative; left: 250px" id="unitsNames">{{unit_number}} {{unit_name}}</h3>
+<h3  class="unitNames">{{unit_number}} {{unit_name}}</h3>
 <div id="move">
-<table style="padding: 25px; border: 1px" class="table tableRoster" >
+<table class="table tableRoster" >
     <thead class="thead"> 
         <tr>
             <th scope="col">Family Member</th>
@@ -24,7 +24,7 @@
             <td>{{last_name}}</td>
             <td>{{phone}}</td>
             <td>{{cell}}</td>
-            <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+            <td><a href="mailto:{{user.email}}" class="link-d">{{user.email}}</a></td>
         </tr>
         {{/each}}
     </tbody>
